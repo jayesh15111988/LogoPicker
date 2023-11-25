@@ -12,6 +12,8 @@ typealias ViewModel = LogoView.ViewModel
 
 class ViewController: UIViewController {
 
+    var logoState: LogoState = .title(initials: "JK")
+
     private enum Constants {
         static let horizontalSpacing: CGFloat = 10.0
     }
@@ -72,7 +74,7 @@ class ViewController: UIViewController {
 
 extension ViewController: TapEventHandalable {
     func logoViewTapped() {
-        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: .title(initials: "JK"), backgroundColor: .blue, foregroundColor: .white, tappable: false), logoFrameSize: self.logoView.frame.size))
+        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: logoState, backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFill, tappable: false), logoFrameSize: self.logoView.frame.size))
         logoPickerViewController.delegate = self
         self.present(logoPickerViewController, animated: true)
     }
@@ -85,8 +87,7 @@ extension ViewController: LogoPickerViewControllerDelegate {
     
     func selectionCompleted(logoState: LogoState) {
         self.logoView.updateLogoState(with: logoState)
+        self.logoState = logoState
         self.presentedViewController?.dismiss(animated: true)
     }
-    
-
 }

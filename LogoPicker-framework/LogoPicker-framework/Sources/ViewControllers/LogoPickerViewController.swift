@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 import OSLog
 
 public protocol LogoPickerViewControllerDelegate: AnyObject {
@@ -15,10 +16,17 @@ public protocol LogoPickerViewControllerDelegate: AnyObject {
 
 public class LogoPickerViewController: UIViewController {
 
+    private let cameraImagePickerController: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        return picker
+    }()
+
     private static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
         category: String(describing: LogoPickerViewController.self)
     )
+
+    var updatedLogoViewModel: LogoView.ViewModel
 
     public struct ViewModel {
 
@@ -61,7 +69,7 @@ public class LogoPickerViewController: UIViewController {
             }
         }
 
-        let logoViewModel: LogoView.ViewModel
+        var logoViewModel: LogoView.ViewModel
         let title: String
         let logoFrameSize: CGSize
         var selectedLogoState: LogoState
@@ -103,13 +111,14 @@ public class LogoPickerViewController: UIViewController {
 
     public init(viewModel: ViewModel) {
         self.viewModel = viewModel
+        self.updatedLogoViewModel = viewModel.logoViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -155,7 +164,7 @@ public class LogoPickerViewController: UIViewController {
             return
         }
 
-        delegate.selectionCompleted(logoState: viewModel.selectedLogoState)
+        delegate.selectionCompleted(logoState: updatedLogoViewModel.logoState)
     }
 
     private func layoutViews() {
@@ -172,9 +181,7 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
 
         switch section {
         case .recentlyUsed:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as? UITableViewCell else {
-                fatalError("Failed to get expected kind of reusable cell from the tableView. Expected UITableViewCell")
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
 
             cell.selectionStyle = section.selectionStyle
             cell.textLabel?.text = "xxx"
@@ -185,7 +192,8 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
             }
 
             cell.selectionStyle = section.selectionStyle
-            cell.configure(with: viewModel.logoViewModel, logoFrameSize: viewModel.logoFrameSize)
+
+            cell.configure(with: updatedLogoViewModel, logoFrameSize: viewModel.logoFrameSize)
             return cell
         case .logoPickerOptions(let options):
             let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
@@ -236,9 +244,93 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case .recentlyUsed, .preview:
             break
-        case .logoPickerOptions:
+        case .logoPickerOptions(let options):
             tableView.deselectRow(at: indexPath, animated: true)
-            print("YES")
+
+            let option = options[indexPath.row]
+
+            switch option {
+            case .gallery:
+                openPhotoGallery()
+            case .camera:
+                openCamera()
+            // Add handling for more cases as necessary
+            }
+        }
+    }
+
+    private func openPhotoGallery() {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+        let pickerViewController = PHPickerViewController(configuration: configuration)
+        pickerViewController.delegate = self
+        present(pickerViewController, animated: true)
+    }
+
+    private func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            cameraImagePickerController.sourceType = .camera
+            cameraImagePickerController.delegate = self
+            self.present(cameraImagePickerController, animated: true)
+        } else {
+            let cameraAccessDeniedActions: [UIAlertAction] = [UIAlertAction(title: "Dismiss", style: .cancel), UIAlertAction(title: "Check Settings", style: .default, handler: { actions in
+                if let url = URL(string:UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            })]
+
+            AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to Access Camera", message: "The app cannot access camera on this device. Please check the camera permissions in settings", actions: cameraAccessDeniedActions), parentViewController: self)
+        }
+    }
+}
+
+extension LogoPickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        guard let image = info[.originalImage] as? UIImage else {
+            AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to get image", message: "App is unable to get the clicked image. Please try again."), parentViewController: self)
+            return
+        }
+        updatePreview(with: .image(logoImage: image))
+    }
+}
+
+extension LogoPickerViewController: PHPickerViewControllerDelegate {
+    public func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+
+        if let itemProvider = results.first?.itemProvider {
+            if itemProvider.canLoadObject(ofClass: UIImage.self){
+                itemProvider.loadObject(ofClass: UIImage.self) { image , error  in
+                    if let error {
+                        AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to load selected image", message: "App is unable to load selected image due to an error \(error.localizedDescription)"), parentViewController: self)
+                    }
+                    if let selectedImage = image as? UIImage{
+                        self.updatePreview(with: .image(logoImage: selectedImage))
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Utility methods
+extension LogoPickerViewController {
+    func updatePreview(with logoState: LogoState) {
+        let oldViewModel = self.updatedLogoViewModel
+        self.updatedLogoViewModel = LogoView.ViewModel(logoState: logoState, backgroundColor: oldViewModel.backgroundColor, foregroundColor: oldViewModel.foregroundColor, logoContentMode: oldViewModel.logoContentMode, tappable: oldViewModel.tappable)
+
+        if let previewSectionIndex = self.viewModel.sections.firstIndex(where: {
+            if case .preview = $0 {
+                return true
+            }
+            return false
+        }) {
+            DispatchQueue.main.async {
+                self.tableView.reloadSections([previewSectionIndex], with: .none)
+            }
         }
     }
 }

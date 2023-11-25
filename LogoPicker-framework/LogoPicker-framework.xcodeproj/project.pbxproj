@@ -19,6 +19,7 @@
 		91783D7A2B1246BE00766268 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D792B1246BE00766268 /* ReusableView.swift */; };
 		91783D7D2B12531B00766268 /* LogoPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D7C2B12531B00766268 /* LogoPreviewTableViewCell.swift */; };
 		91783D802B1259CD00766268 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D7F2B1259CD00766268 /* UITableViewCell+Extension.swift */; };
+		91783D832B125E0300766268 /* AlertDisplayUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D822B125E0300766268 /* AlertDisplayUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		91783D792B1246BE00766268 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		91783D7C2B12531B00766268 /* LogoPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPreviewTableViewCell.swift; sourceTree = "<group>"; };
 		91783D7F2B1259CD00766268 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		91783D822B125E0300766268 /* AlertDisplayUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		91783D632B11FEC100766268 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				91783D812B125DF700766268 /* Utilities */,
 				91783D7E2B1259BD00766268 /* Extensions */,
 				91783D7B2B12507500766268 /* Cells */,
 				91783D782B1246B200766268 /* Protocols */,
@@ -163,6 +166,14 @@
 				91783D7F2B1259CD00766268 /* UITableViewCell+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		91783D812B125DF700766268 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				91783D822B125E0300766268 /* AlertDisplayUtility.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 				91783D702B12187C00766268 /* LogoPickerViewController.swift in Sources */,
 				91783D802B1259CD00766268 /* UITableViewCell+Extension.swift in Sources */,
 				91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */,
+				91783D832B125E0300766268 /* AlertDisplayUtility.swift in Sources */,
 				91783D7A2B1246BE00766268 /* ReusableView.swift in Sources */,
 				91783D6D2B12036A00766268 /* LogoView.swift in Sources */,
 				91783D7D2B12531B00766268 /* LogoPreviewTableViewCell.swift in Sources */,

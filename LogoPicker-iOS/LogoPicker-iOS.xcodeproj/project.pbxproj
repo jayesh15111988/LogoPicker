@@ -66,6 +66,7 @@
 		91783D542B11FEA300766268 /* LogoPicker_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPicker_iOSUITests.swift; sourceTree = "<group>"; };
 		91783D562B11FEA300766268 /* LogoPicker_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPicker_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		91783D672B11FEF900766268 /* LogoPicker_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LogoPicker_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91783D842B126E2000766268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +133,7 @@
 		91783D492B11FEA300766268 /* LogoPicker-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				91783D842B126E2000766268 /* Info.plist */,
 				91783D4A2B11FEA300766268 /* LogoPicker_iOSTests.swift */,
 			);
 			path = "LogoPicker-iOSTests";
@@ -526,6 +528,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MV3J9MQS8N;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LogoPicker-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "XYZ.LogoPicker-iOSTests";
@@ -546,6 +549,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MV3J9MQS8N;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LogoPicker-iOSTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "XYZ.LogoPicker-iOSTests";
