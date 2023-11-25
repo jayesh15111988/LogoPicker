@@ -12,6 +12,7 @@
 		91783D1D2B11FE8E00766268 /* LogoPicker_frameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D1C2B11FE8E00766268 /* LogoPicker_frameworkTests.swift */; };
 		91783D1E2B11FE8E00766268 /* LogoPicker_framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 91783D102B11FE8D00766268 /* LogoPicker_framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91783D6D2B12036A00766268 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D6C2B12036A00766268 /* LogoView.swift */; };
+		91783D702B12187C00766268 /* LogoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D6F2B12187C00766268 /* LogoPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		91783D172B11FE8E00766268 /* LogoPicker-frameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LogoPicker-frameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91783D1C2B11FE8E00766268 /* LogoPicker_frameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPicker_frameworkTests.swift; sourceTree = "<group>"; };
 		91783D6C2B12036A00766268 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		91783D6F2B12187C00766268 /* LogoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		91783D632B11FEC100766268 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				91783D6E2B12185E00766268 /* ViewControllers */,
 				91783D6B2B12035100766268 /* Views */,
 			);
 			path = Sources;
@@ -102,6 +105,14 @@
 				91783D6C2B12036A00766268 /* LogoView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		91783D6E2B12185E00766268 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				91783D6F2B12187C00766268 /* LogoPickerViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91783D702B12187C00766268 /* LogoPickerViewController.swift in Sources */,
 				91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */,
 				91783D6D2B12036A00766268 /* LogoView.swift in Sources */,
 			);
