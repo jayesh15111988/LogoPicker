@@ -6,8 +6,18 @@
 //
 
 import UIKit
+import OSLog
+
+public protocol TapEventHandalable: AnyObject {
+    func logoViewTapped()
+}
 
 public class LogoView: UIView {
+
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: LogoView.self)
+    )
 
     enum Constants {
         static let horizontalSpacing: CGFloat = 10.0
@@ -35,6 +45,7 @@ public class LogoView: UIView {
     }
 
     private var viewModel: ViewModel?
+    public weak var delegate: TapEventHandalable?
 
     public struct ViewModel {
 
@@ -55,6 +66,7 @@ public class LogoView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        addTapGestureRecognizer()
     }
 
     private func setupViews() {
@@ -72,6 +84,20 @@ public class LogoView: UIView {
         self.initialsLabel.center = CGPointMake(bounds.midX, bounds.midY)
     }
 
+    private func addTapGestureRecognizer() {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(LogoView.handleTapGesture(_:)))
+        self.addGestureRecognizer(recognizer)
+        self.isUserInteractionEnabled = true
+    }
+
+    @objc private func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
+        if let delegate {
+            delegate.logoViewTapped()
+        } else {
+            Self.logger.warning("Delegate must be set up on \(String(describing: LogoView.self)) class in order to receive touch events")
+        }
+    }
+
     public func configure(with viewModel:ViewModel) {
         
         self.viewModel = viewModel
@@ -84,10 +110,6 @@ public class LogoView: UIView {
     }
 
     public func updateLogoState(with newState: LogoState) {
-
-        guard let viewModel else {
-            return
-        }
 
         switch newState {
         case .title(let initials):

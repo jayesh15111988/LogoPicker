@@ -23,10 +23,18 @@ class ViewController: UIViewController {
     }
 
     private func setupViews() {
-        self.view.addSubview(logoView)
+        
+        logoView.delegate = self
 
+        self.view.addSubview(logoView)
         logoView.center = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
         logoView.configure(with: ViewModel(logoState: .title(initials: "JK"), backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFit))
+    }
+}
+
+extension ViewController: TapEventHandalable {
+    func logoViewTapped() {
+
     }
 }
 
