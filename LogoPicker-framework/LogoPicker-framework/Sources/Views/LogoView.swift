@@ -50,7 +50,7 @@ public class LogoView: UIView {
         let logoContentMode: ContentMode
         let tappable: Bool
 
-        public init(logoState: LogoState, backgroundColor: UIColor, foregroundColor: UIColor, logoContentMode: ContentMode = .scaleAspectFit, tappable: Bool = false) {
+        public init(logoState: LogoState, backgroundColor: UIColor, foregroundColor: UIColor, logoContentMode: ContentMode = .scaleAspectFill, tappable: Bool = false) {
 
             self.logoState = logoState
             self.backgroundColor = backgroundColor

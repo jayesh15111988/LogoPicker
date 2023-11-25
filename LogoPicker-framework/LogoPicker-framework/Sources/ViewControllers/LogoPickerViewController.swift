@@ -270,18 +270,38 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
 
     private func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            cameraImagePickerController.sourceType = .camera
-            cameraImagePickerController.delegate = self
-            self.present(cameraImagePickerController, animated: true)
+            if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+                presentCameraPickerViewController()
+            } else {
+                AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                    DispatchQueue.main.async {
+                        if granted {
+                            self.presentCameraPickerViewController()
+                        } else {
+                            self.presentEnableCameraPermissionPopup()
+                        }
+                    }
+                })
+            }
         } else {
-            let cameraAccessDeniedActions: [UIAlertAction] = [UIAlertAction(title: "Dismiss", style: .cancel), UIAlertAction(title: "Check Settings", style: .default, handler: { actions in
-                if let url = URL(string:UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            })]
-
-            AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to Access Camera", message: "The app cannot access camera on this device. Please check the camera permissions in settings", actions: cameraAccessDeniedActions), parentViewController: self)
+            AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to Access camera", message: "Unfortunately, app is unable to access camera of your device. Please check the device and try again"), parentViewController: self)
         }
+    }
+
+    private func presentEnableCameraPermissionPopup() {
+        let cameraAccessDeniedActions: [UIAlertAction] = [UIAlertAction(title: "Dismiss", style: .cancel), UIAlertAction(title: "Check Settings", style: .default, handler: { actions in
+            if let url = URL(string:UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        })]
+
+        AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to Access Camera", message: "The app cannot access camera on this device. Please check the camera permissions in settings", actions: cameraAccessDeniedActions), parentViewController: self)
+    }
+
+    private func presentCameraPickerViewController() {
+        cameraImagePickerController.sourceType = .camera
+        cameraImagePickerController.delegate = self
+        self.present(cameraImagePickerController, animated: true)
     }
 }
 

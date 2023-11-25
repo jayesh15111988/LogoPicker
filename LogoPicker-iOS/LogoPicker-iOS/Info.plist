@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Awesome app needs to access the photo library to be able to choose from existing collection</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Awesome app needs to access the camera to take the pictures</string>
 	<key>UIApplicationSceneManifest</key>
