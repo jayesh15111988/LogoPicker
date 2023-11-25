@@ -48,13 +48,15 @@ public class LogoView: UIView {
         let backgroundColor: UIColor
         let foregroundColor: UIColor
         let logoContentMode: ContentMode
+        let tappable: Bool
 
-        public init(logoState: LogoState, backgroundColor: UIColor, foregroundColor: UIColor, logoContentMode: ContentMode = .scaleAspectFit) {
+        public init(logoState: LogoState, backgroundColor: UIColor, foregroundColor: UIColor, logoContentMode: ContentMode = .scaleAspectFit, tappable: Bool = false) {
 
             self.logoState = logoState
             self.backgroundColor = backgroundColor
             self.foregroundColor = foregroundColor
             self.logoContentMode = logoContentMode
+            self.tappable = tappable
         }
     }
 
@@ -71,12 +73,6 @@ public class LogoView: UIView {
         self.addSubview(backgroundView)
         self.addSubview(logoImageView)
         self.addSubview(initialsLabel)
-
-        self.backgroundView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: self.frame.width, height: self.frame.height))
-        self.logoImageView.frame = self.backgroundView.frame
-
-        self.initialsLabel.frame.size = CGSize(width: self.frame.width - 2 * Constants.horizontalSpacing, height: self.frame.height / 3.0)
-        self.initialsLabel.center = CGPointMake(bounds.midX, bounds.midY)
     }
 
     private func addTapGestureRecognizer() {
@@ -86,6 +82,11 @@ public class LogoView: UIView {
     }
 
     @objc private func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
+
+        guard viewModel?.tappable == true else {
+            return
+        }
+
         guard let delegate else {
             Self.logger.warning("Delegate must be set up on \(String(describing: LogoView.self)) class in order to receive touch events")
             return
@@ -96,6 +97,12 @@ public class LogoView: UIView {
     public func configure(with viewModel:ViewModel) {
         
         self.viewModel = viewModel
+
+        self.backgroundView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: self.frame.width, height: self.frame.height))
+        self.logoImageView.frame = self.backgroundView.frame
+
+        self.initialsLabel.frame.size = CGSize(width: self.frame.width - 2 * Constants.horizontalSpacing, height: self.frame.height / 3.0)
+        self.initialsLabel.center = CGPointMake(bounds.midX, bounds.midY)
 
         self.backgroundView.backgroundColor = viewModel.backgroundColor
         self.initialsLabel.textColor = viewModel.foregroundColor

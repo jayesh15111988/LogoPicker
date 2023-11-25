@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 
     private func layoutViews() {
         logoView.frame.origin = CGPoint(x: Constants.horizontalSpacing, y: self.view.bounds.midY - logoView.frame.height / 2.0)
-        logoView.configure(with: ViewModel(logoState: .title(initials: "JK"), backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFit))
+        logoView.configure(with: ViewModel(logoState: .title(initials: "JK"), backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFit, tappable: true))
 
         let titlesHorizontalSpacing = Constants.horizontalSpacing * 2 + logoView.frame.width
         let titlesWidth = self.view.frame.width - 2 * Constants.horizontalSpacing - Constants.horizontalSpacing - logoView.frame.width
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
 
 extension ViewController: TapEventHandalable {
     func logoViewTapped() {
-        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: .title(initials: "JK"), backgroundColor: .black, foregroundColor: .white), logoFrameSize: self.logoView.frame.size))
+        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: .title(initials: "JK"), backgroundColor: .blue, foregroundColor: .white, tappable: false), logoFrameSize: self.logoView.frame.size))
         logoPickerViewController.delegate = self
         self.present(logoPickerViewController, animated: true)
     }

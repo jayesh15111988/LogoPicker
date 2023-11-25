@@ -48,6 +48,17 @@ public class LogoPickerViewController: UIViewController {
                     return pickerSources.count
                 }
             }
+
+            var selectionStyle: UITableViewCell.SelectionStyle {
+                switch self {
+                case .recentlyUsed:
+                    return .none
+                case .preview:
+                    return .none
+                case .logoPickerOptions:
+                    return .default
+                }
+            }
         }
 
         let logoViewModel: LogoView.ViewModel
@@ -113,7 +124,8 @@ public class LogoPickerViewController: UIViewController {
 
     private func registerCells() {
         tableView.register(LogoSelectorTableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: LogoSelectorTableSectionHeaderView.reuseIdentifier)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(LogoPreviewTableViewCell.self, forCellReuseIdentifier: LogoPreviewTableViewCell.reuseIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
     }
 
     private func setupViews() {
@@ -148,19 +160,40 @@ public class LogoPickerViewController: UIViewController {
 
     private func layoutViews() {
         self.cancelButton.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 44))
-        self.doneButton.frame = CGRect(origin: CGPoint(x: self.view.frame.width - 100, y: 10), size: CGSize(width: 100, height: 44))
+        self.doneButton.frame = CGRect(origin: CGPoint(x: self.view.frame.width - 100, y: 0), size: CGSize(width: 100, height: 44))
         self.tableView.frame = CGRect(origin: CGPoint(x: 0, y: self.doneButton.frame.maxY), size: CGSize(width: self.view.frame.width, height: self.view.frame.height - 44.0))
     }
 }
 
 extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? UITableViewCell else {
-            fatalError("Failed to get expected kind of reusable cell from the tableView. Expected UITableViewCell")
-        }
 
-        cell.textLabel?.text = "xxx"
-        return cell
+        let section = viewModel.sections[indexPath.section]
+
+        switch section {
+        case .recentlyUsed:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as? UITableViewCell else {
+                fatalError("Failed to get expected kind of reusable cell from the tableView. Expected UITableViewCell")
+            }
+
+            cell.selectionStyle = section.selectionStyle
+            cell.textLabel?.text = "xxx"
+            return cell
+        case .preview:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: LogoPreviewTableViewCell.reuseIdentifier, for: indexPath) as? LogoPreviewTableViewCell else {
+                fatalError("Failed to get expected kind of reusable cell from the tableView. Expected LogoPreviewTableViewCell")
+            }
+
+            cell.selectionStyle = section.selectionStyle
+            cell.configure(with: viewModel.logoViewModel, logoFrameSize: viewModel.logoFrameSize)
+            return cell
+        case .logoPickerOptions(let options):
+            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
+
+            cell.selectionStyle = section.selectionStyle
+            cell.textLabel?.text = options[indexPath.row].title
+            return cell
+        }
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -182,5 +215,30 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44.0
+    }
+
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = viewModel.sections[indexPath.section]
+
+        switch section {
+        case .recentlyUsed:
+            return 64
+        case .preview:
+            return viewModel.logoFrameSize.height + 20
+        case .logoPickerOptions:
+            return 44
+        }
+    }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = viewModel.sections[indexPath.section]
+
+        switch section {
+        case .recentlyUsed, .preview:
+            break
+        case .logoPickerOptions:
+            tableView.deselectRow(at: indexPath, animated: true)
+            print("YES")
+        }
     }
 }

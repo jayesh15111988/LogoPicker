@@ -28,6 +28,7 @@ final public class LogoSelectorTableSectionHeaderView: UITableViewHeaderFooterVi
     private let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = .black
+        label.textAlignment = .center
         return label
     }()
 
@@ -43,6 +44,7 @@ final public class LogoSelectorTableSectionHeaderView: UITableViewHeaderFooterVi
     //MARK: Private methods
     private func setupViews() {
         self.addSubview(titleLabel)
+        self.contentView.backgroundColor = .lightGray
     }
 
     public func configure(with viewModel: ViewModel) {
@@ -56,5 +58,3 @@ extension LogoSelectorTableSectionHeaderView: ReusableView {
         return String(describing: self)
     }
 }
-
-
