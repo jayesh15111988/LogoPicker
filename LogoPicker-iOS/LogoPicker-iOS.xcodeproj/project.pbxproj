@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		91783D342B11FEA100766268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D332B11FEA100766268 /* AppDelegate.swift */; };
+		91783D362B11FEA100766268 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D352B11FEA100766268 /* SceneDelegate.swift */; };
+		91783D382B11FEA100766268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D372B11FEA100766268 /* ViewController.swift */; };
+		91783D3B2B11FEA100766268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91783D392B11FEA100766268 /* Main.storyboard */; };
+		91783D3D2B11FEA300766268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91783D3C2B11FEA300766268 /* Assets.xcassets */; };
+		91783D402B11FEA300766268 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91783D3E2B11FEA300766268 /* LaunchScreen.storyboard */; };
+		91783D4B2B11FEA300766268 /* LogoPicker_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D4A2B11FEA300766268 /* LogoPicker_iOSTests.swift */; };
+		91783D552B11FEA300766268 /* LogoPicker_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D542B11FEA300766268 /* LogoPicker_iOSUITests.swift */; };
+		91783D572B11FEA300766268 /* LogoPicker_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D562B11FEA300766268 /* LogoPicker_iOSUITestsLaunchTests.swift */; };
+		91783D682B11FEF900766268 /* LogoPicker_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91783D672B11FEF900766268 /* LogoPicker_framework.framework */; };
+		91783D692B11FEF900766268 /* LogoPicker_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91783D672B11FEF900766268 /* LogoPicker_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		91783D472B11FEA300766268 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91783D282B11FEA100766268 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91783D2F2B11FEA100766268;
+			remoteInfo = "LogoPicker-iOS";
+		};
+		91783D512B11FEA300766268 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91783D282B11FEA100766268 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91783D2F2B11FEA100766268;
+			remoteInfo = "LogoPicker-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		91783D6A2B11FEF900766268 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				91783D692B11FEF900766268 /* LogoPicker_framework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		91783D302B11FEA100766268 /* LogoPicker-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LogoPicker-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91783D332B11FEA100766268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		91783D352B11FEA100766268 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		91783D372B11FEA100766268 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		91783D3A2B11FEA100766268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		91783D3C2B11FEA300766268 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		91783D3F2B11FEA300766268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		91783D412B11FEA300766268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91783D462B11FEA300766268 /* LogoPicker-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LogoPicker-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91783D4A2B11FEA300766268 /* LogoPicker_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPicker_iOSTests.swift; sourceTree = "<group>"; };
+		91783D502B11FEA300766268 /* LogoPicker-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LogoPicker-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91783D542B11FEA300766268 /* LogoPicker_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPicker_iOSUITests.swift; sourceTree = "<group>"; };
+		91783D562B11FEA300766268 /* LogoPicker_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPicker_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		91783D672B11FEF900766268 /* LogoPicker_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LogoPicker_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		91783D2D2B11FEA100766268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91783D682B11FEF900766268 /* LogoPicker_framework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91783D432B11FEA300766268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91783D4D2B11FEA300766268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		91783D272B11FEA100766268 = {
+			isa = PBXGroup;
+			children = (
+				91783D322B11FEA100766268 /* LogoPicker-iOS */,
+				91783D492B11FEA300766268 /* LogoPicker-iOSTests */,
+				91783D532B11FEA300766268 /* LogoPicker-iOSUITests */,
+				91783D312B11FEA100766268 /* Products */,
+				91783D662B11FEF900766268 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		91783D312B11FEA100766268 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91783D302B11FEA100766268 /* LogoPicker-iOS.app */,
+				91783D462B11FEA300766268 /* LogoPicker-iOSTests.xctest */,
+				91783D502B11FEA300766268 /* LogoPicker-iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		91783D322B11FEA100766268 /* LogoPicker-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				91783D332B11FEA100766268 /* AppDelegate.swift */,
+				91783D352B11FEA100766268 /* SceneDelegate.swift */,
+				91783D372B11FEA100766268 /* ViewController.swift */,
+				91783D392B11FEA100766268 /* Main.storyboard */,
+				91783D3C2B11FEA300766268 /* Assets.xcassets */,
+				91783D3E2B11FEA300766268 /* LaunchScreen.storyboard */,
+				91783D412B11FEA300766268 /* Info.plist */,
+			);
+			path = "LogoPicker-iOS";
+			sourceTree = "<group>";
+		};
+		91783D492B11FEA300766268 /* LogoPicker-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				91783D4A2B11FEA300766268 /* LogoPicker_iOSTests.swift */,
+			);
+			path = "LogoPicker-iOSTests";
+			sourceTree = "<group>";
+		};
+		91783D532B11FEA300766268 /* LogoPicker-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				91783D542B11FEA300766268 /* LogoPicker_iOSUITests.swift */,
+				91783D562B11FEA300766268 /* LogoPicker_iOSUITestsLaunchTests.swift */,
+			);
+			path = "LogoPicker-iOSUITests";
+			sourceTree = "<group>";
+		};
+		91783D662B11FEF900766268 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91783D672B11FEF900766268 /* LogoPicker_framework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		91783D2F2B11FEA100766268 /* LogoPicker-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91783D5A2B11FEA300766268 /* Build configuration list for PBXNativeTarget "LogoPicker-iOS" */;
+			buildPhases = (
+				91783D2C2B11FEA100766268 /* Sources */,
+				91783D2D2B11FEA100766268 /* Frameworks */,
+				91783D2E2B11FEA100766268 /* Resources */,
+				91783D6A2B11FEF900766268 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LogoPicker-iOS";
+			productName = "LogoPicker-iOS";
+			productReference = 91783D302B11FEA100766268 /* LogoPicker-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		91783D452B11FEA300766268 /* LogoPicker-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91783D5D2B11FEA300766268 /* Build configuration list for PBXNativeTarget "LogoPicker-iOSTests" */;
+			buildPhases = (
+				91783D422B11FEA300766268 /* Sources */,
+				91783D432B11FEA300766268 /* Frameworks */,
+				91783D442B11FEA300766268 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				91783D482B11FEA300766268 /* PBXTargetDependency */,
+			);
+			name = "LogoPicker-iOSTests";
+			productName = "LogoPicker-iOSTests";
+			productReference = 91783D462B11FEA300766268 /* LogoPicker-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		91783D4F2B11FEA300766268 /* LogoPicker-iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91783D602B11FEA300766268 /* Build configuration list for PBXNativeTarget "LogoPicker-iOSUITests" */;
+			buildPhases = (
+				91783D4C2B11FEA300766268 /* Sources */,
+				91783D4D2B11FEA300766268 /* Frameworks */,
+				91783D4E2B11FEA300766268 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				91783D522B11FEA300766268 /* PBXTargetDependency */,
+			);
+			name = "LogoPicker-iOSUITests";
+			productName = "LogoPicker-iOSUITests";
+			productReference = 91783D502B11FEA300766268 /* LogoPicker-iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		91783D282B11FEA100766268 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					91783D2F2B11FEA100766268 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					91783D452B11FEA300766268 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 91783D2F2B11FEA100766268;
+					};
+					91783D4F2B11FEA300766268 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 91783D2F2B11FEA100766268;
+					};
+				};
+			};
+			buildConfigurationList = 91783D2B2B11FEA100766268 /* Build configuration list for PBXProject "LogoPicker-iOS" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 91783D272B11FEA100766268;
+			productRefGroup = 91783D312B11FEA100766268 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				91783D2F2B11FEA100766268 /* LogoPicker-iOS */,
+				91783D452B11FEA300766268 /* LogoPicker-iOSTests */,
+				91783D4F2B11FEA300766268 /* LogoPicker-iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		91783D2E2B11FEA100766268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91783D402B11FEA300766268 /* LaunchScreen.storyboard in Resources */,
+				91783D3D2B11FEA300766268 /* Assets.xcassets in Resources */,
+				91783D3B2B11FEA100766268 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91783D442B11FEA300766268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91783D4E2B11FEA300766268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		91783D2C2B11FEA100766268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91783D382B11FEA100766268 /* ViewController.swift in Sources */,
+				91783D342B11FEA100766268 /* AppDelegate.swift in Sources */,
+				91783D362B11FEA100766268 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91783D422B11FEA300766268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91783D4B2B11FEA300766268 /* LogoPicker_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91783D4C2B11FEA300766268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91783D552B11FEA300766268 /* LogoPicker_iOSUITests.swift in Sources */,
+				91783D572B11FEA300766268 /* LogoPicker_iOSUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		91783D482B11FEA300766268 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91783D2F2B11FEA100766268 /* LogoPicker-iOS */;
+			targetProxy = 91783D472B11FEA300766268 /* PBXContainerItemProxy */;
+		};
+		91783D522B11FEA300766268 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91783D2F2B11FEA100766268 /* LogoPicker-iOS */;
+			targetProxy = 91783D512B11FEA300766268 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		91783D392B11FEA100766268 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91783D3A2B11FEA100766268 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		91783D3E2B11FEA300766268 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91783D3F2B11FEA300766268 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		91783D582B11FEA300766268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		91783D592B11FEA300766268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		91783D5B2B11FEA300766268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MV3J9MQS8N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LogoPicker-iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "XYZ.LogoPicker-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		91783D5C2B11FEA300766268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MV3J9MQS8N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LogoPicker-iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "XYZ.LogoPicker-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		91783D5E2B11FEA300766268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MV3J9MQS8N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "XYZ.LogoPicker-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LogoPicker-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LogoPicker-iOS";
+			};
+			name = Debug;
+		};
+		91783D5F2B11FEA300766268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MV3J9MQS8N;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "XYZ.LogoPicker-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LogoPicker-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LogoPicker-iOS";
+			};
+			name = Release;
+		};
+		91783D612B11FEA300766268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MV3J9MQS8N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "XYZ.LogoPicker-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "LogoPicker-iOS";
+			};
+			name = Debug;
+		};
+		91783D622B11FEA300766268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MV3J9MQS8N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "XYZ.LogoPicker-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "LogoPicker-iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		91783D2B2B11FEA100766268 /* Build configuration list for PBXProject "LogoPicker-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91783D582B11FEA300766268 /* Debug */,
+				91783D592B11FEA300766268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91783D5A2B11FEA300766268 /* Build configuration list for PBXNativeTarget "LogoPicker-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91783D5B2B11FEA300766268 /* Debug */,
+				91783D5C2B11FEA300766268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91783D5D2B11FEA300766268 /* Build configuration list for PBXNativeTarget "LogoPicker-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91783D5E2B11FEA300766268 /* Debug */,
+				91783D5F2B11FEA300766268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91783D602B11FEA300766268 /* Build configuration list for PBXNativeTarget "LogoPicker-iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91783D612B11FEA300766268 /* Debug */,
+				91783D622B11FEA300766268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 91783D282B11FEA100766268 /* Project object */;
+}
