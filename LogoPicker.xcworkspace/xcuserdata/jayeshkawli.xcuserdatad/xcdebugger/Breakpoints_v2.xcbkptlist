@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "02486777-5AE5-46DA-A597-2C2C51A30652"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C51C06C0-556D-4A90-A7E2-4F8BBD3BDEFA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LogoPicker-framework/LogoPicker-framework/Sources/Views/LogoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "updateLogoState(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C51C06C0-556D-4A90-A7E2-4F8BBD3BDEFA - 856d57a4cac47620"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LogoPicker_framework.LogoView.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;LogoPicker_framework.LogoView&gt;"
+                  moduleName = "LogoPicker_framework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/Xcode_projects/LogoPicker/LogoPicker-framework/LogoPicker-framework/Sources/Views/LogoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "C51C06C0-556D-4A90-A7E2-4F8BBD3BDEFA - 811e2a97a3b910c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LogoPicker_framework.LogoView.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;LogoPicker_framework.LogoView&gt;"
+                  moduleName = "LogoPicker_framework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/Xcode_projects/LogoPicker/LogoPicker-framework/LogoPicker-framework/Sources/Views/LogoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "79">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A3D556A3-1FE2-401C-920A-227316EA13F1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LogoPicker-framework/LogoPicker-framework/Sources/Views/LogoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "setupViews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

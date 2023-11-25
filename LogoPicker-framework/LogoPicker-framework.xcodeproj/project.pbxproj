@@ -11,6 +11,7 @@
 		91783D182B11FE8E00766268 /* LogoPicker_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91783D0D2B11FE8D00766268 /* LogoPicker_framework.framework */; };
 		91783D1D2B11FE8E00766268 /* LogoPicker_frameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D1C2B11FE8E00766268 /* LogoPicker_frameworkTests.swift */; };
 		91783D1E2B11FE8E00766268 /* LogoPicker_framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 91783D102B11FE8D00766268 /* LogoPicker_framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91783D6D2B12036A00766268 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D6C2B12036A00766268 /* LogoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		91783D112B11FE8D00766268 /* LogoPicker_framework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = LogoPicker_framework.docc; sourceTree = "<group>"; };
 		91783D172B11FE8E00766268 /* LogoPicker-frameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LogoPicker-frameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91783D1C2B11FE8E00766268 /* LogoPicker_frameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPicker_frameworkTests.swift; sourceTree = "<group>"; };
+		91783D6C2B12036A00766268 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +91,17 @@
 		91783D632B11FEC100766268 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				91783D6B2B12035100766268 /* Views */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		91783D6B2B12035100766268 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				91783D6C2B12036A00766268 /* LogoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */,
+				91783D6D2B12036A00766268 /* LogoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +427,7 @@
 		91783D252B11FE8E00766268 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MV3J9MQS8N;
@@ -431,6 +444,7 @@
 		91783D262B11FE8E00766268 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MV3J9MQS8N;
