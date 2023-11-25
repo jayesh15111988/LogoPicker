@@ -39,11 +39,6 @@ public class LogoView: UIView {
         return imageView
     }()
 
-    public enum LogoState {
-        case title(initials: String)
-        case image(logoImage: UIImage)
-    }
-
     private var viewModel: ViewModel?
     public weak var delegate: TapEventHandalable?
 
@@ -91,11 +86,11 @@ public class LogoView: UIView {
     }
 
     @objc private func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
-        if let delegate {
-            delegate.logoViewTapped()
-        } else {
+        guard let delegate else {
             Self.logger.warning("Delegate must be set up on \(String(describing: LogoView.self)) class in order to receive touch events")
+            return
         }
+        delegate.logoViewTapped()
     }
 
     public func configure(with viewModel:ViewModel) {

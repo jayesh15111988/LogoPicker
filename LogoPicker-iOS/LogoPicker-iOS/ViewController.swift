@@ -38,6 +38,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        layoutViews()
     }
 
     private func setupViews() {
@@ -49,7 +50,9 @@ class ViewController: UIViewController {
         self.view.addSubview(logoTitleLabel)
         self.view.addSubview(logoSubtitleLabel)
         self.view.addSubview(logoView)
+    }
 
+    private func layoutViews() {
         logoView.frame.origin = CGPoint(x: Constants.horizontalSpacing, y: self.view.bounds.midY - logoView.frame.height / 2.0)
         logoView.configure(with: ViewModel(logoState: .title(initials: "JK"), backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFit))
 
@@ -69,7 +72,21 @@ class ViewController: UIViewController {
 
 extension ViewController: TapEventHandalable {
     func logoViewTapped() {
-
+        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: .title(initials: "JK"), backgroundColor: .black, foregroundColor: .white), logoFrameSize: self.logoView.frame.size))
+        logoPickerViewController.delegate = self
+        self.present(logoPickerViewController, animated: true)
     }
 }
 
+extension ViewController: LogoPickerViewControllerDelegate {
+    func selectionCancelled() {
+        self.presentedViewController?.dismiss(animated: true)
+    }
+    
+    func selectionCompleted(logoState: LogoState) {
+        self.logoView.updateLogoState(with: logoState)
+        self.presentedViewController?.dismiss(animated: true)
+    }
+    
+
+}
