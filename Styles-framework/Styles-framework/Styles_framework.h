@@ -14,5 +14,3 @@ FOUNDATION_EXPORT double Styles_frameworkVersionNumber;
 FOUNDATION_EXPORT const unsigned char Styles_frameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Styles_framework/PublicHeader.h>
-
-

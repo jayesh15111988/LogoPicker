@@ -22,7 +22,7 @@ extension ViewController: TapEventHandalable {
                     backgroundColor: Style.shared.logoBackgroundColor,
                     foregroundColor: Style.shared.logoForegroundColor,
                     logoContentMode: .scaleAspectFill),
-                logoFrameSize: .square(dimension: self.logoView.frame.size.width)
+                logoFrameSize: .square(dimension: 200)
             )
         )
 

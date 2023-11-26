@@ -90,7 +90,7 @@ final public class LogoPickerViewController: UIViewController {
         public init(
             logoViewModel: LogoView.ViewModel,
             title: String = "Change Logo",
-            logoFrameSize: LogoFrameSize = .square(dimension: 100)
+            logoFrameSize: LogoFrameSize = .square(dimension: 200)
         ) {
             self.logoViewModel = logoViewModel
             self.title = title
@@ -103,7 +103,11 @@ final public class LogoPickerViewController: UIViewController {
                 foregroundColor: Style.shared.logoForegroundColor
             ) }
 
-            self.sections = [.recentlyUsed(recentImagesLogoViewModels), .preview, .logoPickerOptions([.gallery, .camera])]
+            self.sections = [
+                    .preview,
+                    .recentlyUsed(recentImagesLogoViewModels),
+                    .logoPickerOptions([.gallery, .camera])
+            ]
         }
     }
 

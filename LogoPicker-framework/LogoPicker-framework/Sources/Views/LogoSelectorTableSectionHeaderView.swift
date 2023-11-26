@@ -30,6 +30,7 @@ final public class LogoSelectorTableSectionHeaderView: UITableViewHeaderFooterVi
     private let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = Style.shared.defaultTextColor
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textAlignment = .center
         return label
     }()
@@ -46,7 +47,7 @@ final public class LogoSelectorTableSectionHeaderView: UITableViewHeaderFooterVi
     //MARK: Private methods
     private func setupViews() {
         self.addSubview(titleLabel)
-        self.contentView.backgroundColor = Style.shared.sectionHeaderBackgroundColor
+        self.contentView.backgroundColor = Style.shared.backgroundColor
     }
     
     /// A method to configure header with provided view model

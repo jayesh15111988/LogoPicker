@@ -20,6 +20,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 .DS_Store
+LogoPicker-framework/*/.DS_Store
 default.profraw
 .secrets
 
