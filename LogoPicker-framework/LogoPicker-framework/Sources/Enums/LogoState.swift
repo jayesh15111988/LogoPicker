@@ -24,4 +24,13 @@ public enum LogoState {
             return width / 2.0
         }
     }
+
+    var selectedImage: UIImage? {
+        switch self {
+        case .title:
+            return nil
+        case .image(let logoImage):
+            return logoImage
+        }
+    }
 }
