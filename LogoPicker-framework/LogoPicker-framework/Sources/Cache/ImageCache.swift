@@ -5,7 +5,11 @@
 //  Created by Jayesh Kawli on 11/26/23.
 //
 
+#if os(iOS)
 import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
 
 /// Dummy class to store recently used images in the cache
 final public class ImageCache {

@@ -5,7 +5,11 @@
 //  Created by Jayesh Kawli on 11/25/23.
 //
 
+#if os(iOS)
 import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
 import Styles_framework
 
 /// A custom header view to show different sections on image picker controller
