@@ -6,57 +6,70 @@
 //
 
 import UIKit
+
 import LogoPicker_framework
 
-typealias ViewModel = LogoView.ViewModel
+typealias LogoViewModel = LogoView.ViewModel
 
-class ViewController: UIViewController {
+// A class to demo how logo picker works
+final class ViewController: UIViewController {
 
-    var logoState: LogoState = .title(initials: "JK")
+    // A selected logo state
+    var logoState: LogoState = .title(initials: "AB")
 
     private enum Constants {
         static let horizontalSpacing: CGFloat = 10.0
     }
 
-    private let logoView: LogoView = {
+    // LogoView showing selected logo image or the initials
+    let logoView: LogoView = {
         let logoView = LogoView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 75, height: 75)))
         return logoView
     }()
 
+    // The main title next to selected logo
     private let logoTitleLabel: UILabel = {
-        let label = UILabel()
+        let label = UILabel(frame: .zero)
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textColor = Color.defaultText
         return label
     }()
 
+    // The subtitle next to selected logo
     private let logoSubtitleLabel: UILabel = {
-        let label = UILabel()
+        let label = UILabel(frame: .zero)
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = Color.subtleText
         return label
     }()
 
+    //MARK: Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         layoutViews()
     }
 
+    //MARK: Private methods
+    //MARK: Setting up views
     private func setupViews() {
 
+        // A delegate which will be called after tapping on the logo view
         logoView.delegate = self
+
         logoTitleLabel.text = "Icon"
         logoSubtitleLabel.text = "Tap to Change Icon"
 
+        self.view.addSubview(logoView)
         self.view.addSubview(logoTitleLabel)
         self.view.addSubview(logoSubtitleLabel)
-        self.view.addSubview(logoView)
     }
 
+    //MARK: Laying out views
     private func layoutViews() {
+
         logoView.frame.origin = CGPoint(x: Constants.horizontalSpacing, y: self.view.bounds.midY - logoView.frame.height / 2.0)
-        logoView.configure(with: ViewModel(logoState: logoState, backgroundColor: Color.logoBackground, foregroundColor: Color.logoForeground, logoContentMode: .scaleAspectFill, tappable: true))
+        logoView.configure(with: LogoViewModel(logoState: logoState, backgroundColor: Color.logoBackground, foregroundColor: Color.logoForeground, logoContentMode: .scaleAspectFill, tappable: true))
 
         let titlesHorizontalSpacing = Constants.horizontalSpacing * 2 + logoView.frame.width
         let titlesWidth = self.view.frame.width - 2 * Constants.horizontalSpacing - Constants.horizontalSpacing - logoView.frame.width
@@ -66,31 +79,5 @@ class ViewController: UIViewController {
         logoTitleLabel.frame = CGRect(origin: CGPoint(x: titlesHorizontalSpacing, y: self.logoView.center.y - yOffsetFromCenter), size: CGSize(width: titlesWidth, height: titlesHeight))
 
         logoSubtitleLabel.frame = CGRect(origin: CGPoint(x: titlesHorizontalSpacing, y: self.logoView.center.y), size: CGSize(width: titlesWidth, height: titlesHeight))
-
-        logoTitleLabel.frame.origin.y -= 5
-        logoSubtitleLabel.frame.origin.y += 5
-    }
-}
-
-extension ViewController: TapEventHandalable {
-    func logoViewTapped() {
-
-        let recentImages = [UIImage(named: "placeholder_1"), UIImage(named: "placeholder"), UIImage(named: "placeholder_2"), UIImage(named: "placeholder"), UIImage(named: "placeholder"), UIImage(named: "placeholder_3"), UIImage(named: "placeholder"), UIImage(named: "placeholder"), UIImage(named: "placeholder_1")].compactMap { $0 }
-
-        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: logoState, backgroundColor: Color.logoBackground, foregroundColor: Color.logoForeground, logoContentMode: .scaleAspectFill, tappable: false), logoFrameSize: .square(dimension: self.logoView.frame.size.width), recentImages: recentImages))
-        logoPickerViewController.delegate = self
-        self.present(logoPickerViewController, animated: true)
-    }
-}
-
-extension ViewController: LogoPickerViewControllerDelegate {
-    func selectionCancelled() {
-        self.presentedViewController?.dismiss(animated: true)
-    }
-    
-    func selectionCompleted(logoState: LogoState) {
-        self.logoView.updateLogoState(with: logoState)
-        self.logoState = logoState
-        self.presentedViewController?.dismiss(animated: true)
     }
 }

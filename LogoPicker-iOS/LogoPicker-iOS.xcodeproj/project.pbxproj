@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		914E21942B134AE000FF4CD2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21932B134AE000FF4CD2 /* Color.swift */; };
+		914E21962B1350E700FF4CD2 /* ViewController+LogoPickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21952B1350E700FF4CD2 /* ViewController+LogoPickerViewControllerDelegate.swift */; };
+		914E21982B1353B500FF4CD2 /* ViewController+TapEventHandalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21972B1353B500FF4CD2 /* ViewController+TapEventHandalable.swift */; };
 		91783D342B11FEA100766268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D332B11FEA100766268 /* AppDelegate.swift */; };
 		91783D362B11FEA100766268 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D352B11FEA100766268 /* SceneDelegate.swift */; };
 		91783D382B11FEA100766268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D372B11FEA100766268 /* ViewController.swift */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		914E21932B134AE000FF4CD2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		914E21952B1350E700FF4CD2 /* ViewController+LogoPickerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+LogoPickerViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		914E21972B1353B500FF4CD2 /* ViewController+TapEventHandalable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TapEventHandalable.swift"; sourceTree = "<group>"; };
 		91783D302B11FEA100766268 /* LogoPicker-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LogoPicker-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91783D332B11FEA100766268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91783D352B11FEA100766268 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		914E21992B1353BE00FF4CD2 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				91783D372B11FEA100766268 /* ViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		914E219A2B1353C600FF4CD2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				914E219B2B1353D300FF4CD2 /* ViewController */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		914E219B2B1353D300FF4CD2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				914E21952B1350E700FF4CD2 /* ViewController+LogoPickerViewControllerDelegate.swift */,
+				914E21972B1353B500FF4CD2 /* ViewController+TapEventHandalable.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		914E219C2B13550E00FF4CD2 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				914E21932B134AE000FF4CD2 /* Color.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		91783D272B11FEA100766268 = {
 			isa = PBXGroup;
 			children = (
@@ -121,14 +158,15 @@
 		91783D322B11FEA100766268 /* LogoPicker-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				914E219C2B13550E00FF4CD2 /* Styles */,
+				914E219A2B1353C600FF4CD2 /* Extensions */,
+				914E21992B1353BE00FF4CD2 /* Screens */,
 				91783D332B11FEA100766268 /* AppDelegate.swift */,
 				91783D352B11FEA100766268 /* SceneDelegate.swift */,
-				91783D372B11FEA100766268 /* ViewController.swift */,
 				91783D392B11FEA100766268 /* Main.storyboard */,
 				91783D3C2B11FEA300766268 /* Assets.xcassets */,
 				91783D3E2B11FEA300766268 /* LaunchScreen.storyboard */,
 				91783D412B11FEA300766268 /* Info.plist */,
-				914E21932B134AE000FF4CD2 /* Color.swift */,
 			);
 			path = "LogoPicker-iOS";
 			sourceTree = "<group>";
@@ -294,6 +332,8 @@
 				91783D382B11FEA100766268 /* ViewController.swift in Sources */,
 				914E21942B134AE000FF4CD2 /* Color.swift in Sources */,
 				91783D342B11FEA100766268 /* AppDelegate.swift in Sources */,
+				914E21982B1353B500FF4CD2 /* ViewController+TapEventHandalable.swift in Sources */,
+				914E21962B1350E700FF4CD2 /* ViewController+LogoPickerViewControllerDelegate.swift in Sources */,
 				91783D362B11FEA100766268 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
