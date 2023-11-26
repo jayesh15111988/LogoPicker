@@ -1,0 +1,54 @@
+//
+//  RecentImageCollectionViewCell.swift
+//  LogoPicker-framework
+//
+//  Created by Jayesh Kawli on 11/26/23.
+//
+
+import UIKit
+
+final class RecentImageCollectionViewCell: UICollectionViewCell {
+
+    struct ViewModel {
+        let image: UIImage
+    }
+
+    private enum Constants {
+        static let horizontalPadding: CGFloat = 0.0
+        static let verticalPadding: CGFloat = 0.0
+    }
+
+    let logoView: LogoView = {
+        let logoView = LogoView(frame: .zero)
+        return logoView
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.contentView.clipsToBounds = true
+        setupViews()
+        layoutViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews() {
+        self.contentView.addSubview(logoView)
+    }
+
+    private func layoutViews() {
+        logoView.frame = CGRect(origin: CGPoint(x: Constants.horizontalPadding, y: Constants.verticalPadding), size: CGSize(width: self.contentView.bounds.width - (2 * Constants.horizontalPadding), height: self.contentView.bounds.height - (2 * Constants.verticalPadding)))
+        logoView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    }
+
+    func configure(with viewModel: LogoView.ViewModel) {
+        logoView.configure(with: viewModel)
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        logoView.resetState()
+    }
+}

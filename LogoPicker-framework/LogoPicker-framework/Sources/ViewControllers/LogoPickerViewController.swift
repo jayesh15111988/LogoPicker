@@ -16,6 +16,10 @@ public protocol LogoPickerViewControllerDelegate: AnyObject {
 
 public class LogoPickerViewController: UIViewController {
 
+    enum Constants {
+        static let verticalPadding: CGFloat = 10.0
+    }
+
     private let cameraImagePickerController: UIImagePickerController = {
         let picker = UIImagePickerController()
         return picker
@@ -31,7 +35,7 @@ public class LogoPickerViewController: UIViewController {
     public struct ViewModel {
 
         enum Sections {
-            case recentlyUsed([UIImage])
+            case recentlyUsed([LogoView.ViewModel])
             case preview
             case logoPickerOptions([ImageSource])
 
@@ -75,12 +79,15 @@ public class LogoPickerViewController: UIViewController {
         var selectedLogoState: LogoState
         let sections: [Sections]
 
-        public init(logoViewModel: LogoView.ViewModel, title: String = "Change Logo", logoFrameSize: LogoFrameSize = .square(dimension: 100)) {
+        public init(logoViewModel: LogoView.ViewModel, title: String = "Change Logo", logoFrameSize: LogoFrameSize = .square(dimension: 100), recentImages: [UIImage] = []) {
             self.logoViewModel = logoViewModel
             self.title = title
             self.logoFrameSize = logoFrameSize
             self.selectedLogoState = logoViewModel.logoState
-            self.sections = [.recentlyUsed([UIImage(named: "placeholder")!]), .preview, .logoPickerOptions([.gallery, .camera])]
+
+            let recentImagesLogoViewModels: [LogoView.ViewModel] = recentImages.map { .init(logoState: .image(logoImage: $0), backgroundColor: .lightGray, foregroundColor: .clear) }
+
+            self.sections = [.recentlyUsed(recentImagesLogoViewModels), .preview, .logoPickerOptions([.gallery, .camera])]
         }
     }
 
@@ -133,7 +140,9 @@ public class LogoPickerViewController: UIViewController {
 
     private func registerCells() {
         tableView.register(LogoSelectorTableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: LogoSelectorTableSectionHeaderView.reuseIdentifier)
+
         tableView.register(LogoPreviewTableViewCell.self, forCellReuseIdentifier: LogoPreviewTableViewCell.reuseIdentifier)
+        tableView.register(RecentlyUsedPhotosTableViewCell.self, forCellReuseIdentifier: RecentlyUsedPhotosTableViewCell.reuseIdentifier)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
     }
 
@@ -180,11 +189,14 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
         let section = viewModel.sections[indexPath.section]
 
         switch section {
-        case .recentlyUsed:
-            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
+        case .recentlyUsed(let logoViewModels):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RecentlyUsedPhotosTableViewCell.reuseIdentifier, for: indexPath) as? RecentlyUsedPhotosTableViewCell else {
+                fatalError("Failed to get expected kind of reusable cell from the tableView. Expected RecentlyUsedPhotosTableViewCell")
+            }
 
             cell.selectionStyle = section.selectionStyle
-            cell.textLabel?.text = "xxx"
+            cell.configure(with: logoViewModels)
+            cell.imageSelectionCompletionDelegate = self
             return cell
         case .preview:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: LogoPreviewTableViewCell.reuseIdentifier, for: indexPath) as? LogoPreviewTableViewCell else {
@@ -230,9 +242,9 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
 
         switch section {
         case .recentlyUsed:
-            return 64
+            return 84
         case .preview:
-            return viewModel.logoFrameSize.height + 20
+            return viewModel.logoFrameSize.height + (Constants.verticalPadding * 2)
         case .logoPickerOptions:
             return 44
         }
@@ -352,5 +364,11 @@ extension LogoPickerViewController {
                 self.tableView.reloadSections([previewSectionIndex], with: .none)
             }
         }
+    }
+}
+
+extension LogoPickerViewController: ImageSelectionCompletionDelegate {
+    func imageSelected(state: LogoState) {
+        updatePreview(with: state)
     }
 }

@@ -27,7 +27,6 @@ class LogoPreviewTableViewCell: UITableViewCell {
         logoView.frame.size = CGSize(width: logoFrameSize.width, height: logoFrameSize.height)
         logoView.center = self.contentView.center
         logoView.configure(with: viewModel)
-        logoView.backgroundColor = .red
     }
 
     func update(with newLogoState: LogoState) {
@@ -36,5 +35,10 @@ class LogoPreviewTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        logoView.resetState()
     }
 }

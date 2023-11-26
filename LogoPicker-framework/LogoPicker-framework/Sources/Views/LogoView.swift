@@ -97,7 +97,7 @@ public class LogoView: UIView {
     public func configure(with viewModel:ViewModel) {
         
         self.viewModel = viewModel
-
+        self.isUserInteractionEnabled = viewModel.tappable
         self.backgroundView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: self.frame.width, height: self.frame.height))
         self.logoImageView.frame = self.backgroundView.frame
 
@@ -127,6 +127,12 @@ public class LogoView: UIView {
             logoImageView.isHidden = false
             self.layer.cornerRadius = self.frame.width / 2.0
         }
+    }
+
+    func resetState() {
+        initialsLabel.text = nil
+        logoImageView.image = nil
+        viewModel = nil
     }
 
     required init?(coder: NSCoder) {

@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }
 
     private let logoView: LogoView = {
-        let logoView = LogoView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 50)))
+        let logoView = LogoView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 75, height: 75)))
         return logoView
     }()
 
@@ -74,7 +74,10 @@ class ViewController: UIViewController {
 
 extension ViewController: TapEventHandalable {
     func logoViewTapped() {
-        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: logoState, backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFill, tappable: false), logoFrameSize: self.logoView.frame.size))
+
+        let recentImages = [UIImage(named: "placeholder_1"), UIImage(named: "placeholder"), UIImage(named: "placeholder_2"), UIImage(named: "placeholder"), UIImage(named: "placeholder"), UIImage(named: "placeholder_3"), UIImage(named: "placeholder"), UIImage(named: "placeholder"), UIImage(named: "placeholder_1")].compactMap { $0 }
+
+        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: logoState, backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFill, tappable: false), logoFrameSize: .square(dimension: self.logoView.frame.size.width), recentImages: recentImages))
         logoPickerViewController.delegate = self
         self.present(logoPickerViewController, animated: true)
     }
