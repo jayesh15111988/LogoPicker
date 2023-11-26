@@ -17,6 +17,7 @@
 		914E21B22B1369D400FF4CD2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21B12B1369D400FF4CD2 /* Router.swift */; };
 		914E21D12B13979700FF4CD2 /* Styles_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914E21D02B13979700FF4CD2 /* Styles_framework.framework */; };
 		914E21D22B13979700FF4CD2 /* Styles_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 914E21D02B13979700FF4CD2 /* Styles_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		914E21D62B139A6700FF4CD2 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21D52B139A6700FF4CD2 /* ImageCache.swift */; };
 		91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */ = {isa = PBXBuildFile; fileRef = 91783D112B11FE8D00766268 /* LogoPicker_framework.docc */; };
 		91783D182B11FE8E00766268 /* LogoPicker_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91783D0D2B11FE8D00766268 /* LogoPicker_framework.framework */; };
 		91783D1D2B11FE8E00766268 /* LogoPicker_frameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D1C2B11FE8E00766268 /* LogoPicker_frameworkTests.swift */; };
@@ -71,6 +72,7 @@
 		914E21AE2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogoPickerViewController+UITableViewDataSourceDelegate.swift"; sourceTree = "<group>"; };
 		914E21B12B1369D400FF4CD2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		914E21D02B13979700FF4CD2 /* Styles_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Styles_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		914E21D52B139A6700FF4CD2 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		91783D0D2B11FE8D00766268 /* LogoPicker_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogoPicker_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91783D102B11FE8D00766268 /* LogoPicker_framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogoPicker_framework.h; sourceTree = "<group>"; };
 		91783D112B11FE8D00766268 /* LogoPicker_framework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = LogoPicker_framework.docc; sourceTree = "<group>"; };
@@ -171,6 +173,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		914E21D42B139A5800FF4CD2 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				914E21D52B139A6700FF4CD2 /* ImageCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		91783D032B11FE8D00766268 = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +222,7 @@
 		91783D632B11FEC100766268 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				914E21D42B139A5800FF4CD2 /* Cache */,
 				914E21B02B1369CA00FF4CD2 /* Router */,
 				91783D812B125DF700766268 /* Utilities */,
 				91783D7E2B1259BD00766268 /* Extensions */,
@@ -416,6 +427,7 @@
 				91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */,
 				91783D832B125E0300766268 /* AlertDisplayUtility.swift in Sources */,
 				91783D7A2B1246BE00766268 /* ReusableView.swift in Sources */,
+				914E21D62B139A6700FF4CD2 /* ImageCache.swift in Sources */,
 				91783D6D2B12036A00766268 /* LogoView.swift in Sources */,
 				914E21AF2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift in Sources */,
 				914E21A32B135BFA00FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift in Sources */,

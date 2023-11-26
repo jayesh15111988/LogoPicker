@@ -83,19 +83,17 @@ final public class LogoPickerViewController: UIViewController {
         ///   - logoViewModel: A view model to be applied to LogoView
         ///   - title: A title for page
         ///   - logoFrameSize: Desired size for logo frame
-        ///   - recentImages: A collection of recently used images
         public init(
             logoViewModel: LogoView.ViewModel,
             title: String = "Change Logo",
-            logoFrameSize: LogoFrameSize = .square(dimension: 100),
-            recentImages: [UIImage] = []
+            logoFrameSize: LogoFrameSize = .square(dimension: 100)
         ) {
             self.logoViewModel = logoViewModel
             self.title = title
             self.logoFrameSize = logoFrameSize
             self.selectedLogoState = logoViewModel.logoState
 
-            let recentImagesLogoViewModels: [LogoView.ViewModel] = recentImages.map { LogoView.ViewModel(
+            let recentImagesLogoViewModels: [LogoView.ViewModel] = ImageCache.shared.recentImages().map { LogoView.ViewModel(
                 logoState: .image(logoImage: $0),
                 backgroundColor: Style.shared.logoBackgroundColor,
                 foregroundColor: Style.shared.logoForegroundColor
