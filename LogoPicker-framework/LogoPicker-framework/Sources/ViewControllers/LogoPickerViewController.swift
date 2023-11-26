@@ -6,38 +6,34 @@
 //
 
 import UIKit
-import PhotosUI
 import OSLog
 
-public protocol LogoPickerViewControllerDelegate: AnyObject {
-    func selectionCancelled()
-    func selectionCompleted(logoState: LogoState)
-}
-
-public class LogoPickerViewController: UIViewController {
+/// A main class for facilitating user to view, preview and select logo. This can be re-used at any place that needs replacing the logo. For example, section, teams, profile etc.
+final public class LogoPickerViewController: UIViewController {
 
     enum Constants {
         static let verticalPadding: CGFloat = 10.0
         static let recentImagesSectionHeight: CGFloat = 84.0
         static let imageSourceSectionHeight: CGFloat = 44.0
-        static let defaultSectionHeaderHeight: CGFloat = 44.0
+        static let defaultSectionHeaderHeight: CGFloat = 54.0
     }
 
-    private let cameraImagePickerController: UIImagePickerController = {
-        let picker = UIImagePickerController()
-        return picker
-    }()
+    let cameraImagePickerController = UIImagePickerController()
 
-    private static let logger = Logger(
+    let alertDisplayUtility = AlertDisplayUtility()
+
+    static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
         category: String(describing: LogoPickerViewController.self)
     )
 
     var updatedLogoViewModel: LogoView.ViewModel
 
+    /// A view model to store all the business logic and related data required by this class
     public struct ViewModel {
-
-        enum Sections {
+        
+        /// Sections for logo picker. Currently represents only 3 sections. Can be extended in the future as necessary
+        enum Section {
             case recentlyUsed([LogoView.ViewModel])
             case preview
             case logoPickerOptions([ImageSource])
@@ -78,9 +74,20 @@ public class LogoPickerViewController: UIViewController {
         let title: String
         let logoFrameSize: LogoFrameSize
         var selectedLogoState: LogoState
-        let sections: [Sections]
-
-        public init(logoViewModel: LogoView.ViewModel, title: String = "Change Logo", logoFrameSize: LogoFrameSize = .square(dimension: 100), recentImages: [UIImage] = []) {
+        let sections: [Section]
+        
+        /// An initializer for creating an instance of LogoPickerViewController.ViewModel struct
+        /// - Parameters:
+        ///   - logoViewModel: A view model to be applied to LogoView
+        ///   - title: A title for page
+        ///   - logoFrameSize: Desired size for logo frame
+        ///   - recentImages: A collection of recently used images
+        public init(
+            logoViewModel: LogoView.ViewModel,
+            title: String = "Change Logo",
+            logoFrameSize: LogoFrameSize = .square(dimension: 100),
+            recentImages: [UIImage] = []
+        ) {
             self.logoViewModel = logoViewModel
             self.title = title
             self.logoFrameSize = logoFrameSize
@@ -114,9 +121,10 @@ public class LogoPickerViewController: UIViewController {
         return tableView
     }()
 
-    private let viewModel: ViewModel
+    let viewModel: ViewModel
     public var delegate: LogoPickerViewControllerDelegate?
 
+    //MARK: init
     public init(viewModel: ViewModel) {
         self.viewModel = viewModel
         self.updatedLogoViewModel = viewModel.logoViewModel
@@ -127,6 +135,7 @@ public class LogoPickerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: Lifecycle method
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -135,10 +144,13 @@ public class LogoPickerViewController: UIViewController {
         reloadView()
     }
 
+    //MARK: Private methods
+
     private func reloadView() {
         self.tableView.reloadData()
     }
-
+    
+    /// A method to register all cells to table view
     private func registerCells() {
         tableView.register(LogoSelectorTableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: LogoSelectorTableSectionHeaderView.reuseIdentifier)
 
@@ -147,7 +159,9 @@ public class LogoPickerViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
     }
 
+    //MARK: set up views
     private func setupViews() {
+
         self.view.backgroundColor = Color.background
         self.view.addSubview(cancelButton)
         self.view.addSubview(doneButton)
@@ -158,6 +172,13 @@ public class LogoPickerViewController: UIViewController {
 
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
+    }
+
+    //MARK: Layout views
+    private func layoutViews() {
+        self.cancelButton.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 44))
+        self.doneButton.frame = CGRect(origin: CGPoint(x: self.view.frame.width - 100, y: 0), size: CGSize(width: 100, height: 44))
+        self.tableView.frame = CGRect(origin: CGPoint(x: 0, y: self.doneButton.frame.maxY), size: CGSize(width: self.view.frame.width, height: self.view.frame.height - 44.0))
     }
 
     @objc private func cancelButtonPressed(_ button: UIButton) {
@@ -176,181 +197,13 @@ public class LogoPickerViewController: UIViewController {
 
         delegate.selectionCompleted(logoState: updatedLogoViewModel.logoState)
     }
-
-    private func layoutViews() {
-        self.cancelButton.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 44))
-        self.doneButton.frame = CGRect(origin: CGPoint(x: self.view.frame.width - 100, y: 0), size: CGSize(width: 100, height: 44))
-        self.tableView.frame = CGRect(origin: CGPoint(x: 0, y: self.doneButton.frame.maxY), size: CGSize(width: self.view.frame.width, height: self.view.frame.height - 44.0))
-    }
-}
-
-extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let section = viewModel.sections[indexPath.section]
-
-        switch section {
-        case .recentlyUsed(let logoViewModels):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: RecentlyUsedPhotosTableViewCell.reuseIdentifier, for: indexPath) as? RecentlyUsedPhotosTableViewCell else {
-                fatalError("Failed to get expected kind of reusable cell from the tableView. Expected RecentlyUsedPhotosTableViewCell")
-            }
-
-            cell.selectionStyle = section.selectionStyle
-            cell.configure(with: logoViewModels)
-            cell.imageSelectionCompletionDelegate = self
-            return cell
-        case .preview:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: LogoPreviewTableViewCell.reuseIdentifier, for: indexPath) as? LogoPreviewTableViewCell else {
-                fatalError("Failed to get expected kind of reusable cell from the tableView. Expected LogoPreviewTableViewCell")
-            }
-
-            cell.selectionStyle = section.selectionStyle
-
-            cell.configure(with: updatedLogoViewModel, logoFrameSize: viewModel.logoFrameSize)
-            return cell
-        case .logoPickerOptions(let options):
-            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
-
-            cell.selectionStyle = section.selectionStyle
-            cell.textLabel?.text = options[indexPath.row].title
-            return cell
-        }
-    }
-
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.sections[section].itemCount
-    }
-
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.sections.count
-    }
-
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: LogoSelectorTableSectionHeaderView.reuseIdentifier) as? LogoSelectorTableSectionHeaderView else {
-            fatalError("Could not find expected custom header view class LogoSelectorTableSectionHeaderView. Expected to find the reusable header view LogoSelectorTableSectionHeaderView for sections header")
-        }
-        headerView.configure(with: LogoSelectorTableSectionHeaderView.ViewModel(title: viewModel.sections[section].title, viewWidth: self.view.frame.width))
-
-        return headerView
-    }
-
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Constants.defaultSectionHeaderHeight
-    }
-
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = viewModel.sections[indexPath.section]
-
-        switch section {
-        case .recentlyUsed:
-            return Constants.recentImagesSectionHeight
-        case .preview:
-            return viewModel.logoFrameSize.height + (Constants.verticalPadding * 2)
-        case .logoPickerOptions:
-            return Constants.imageSourceSectionHeight
-        }
-    }
-
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = viewModel.sections[indexPath.section]
-
-        switch section {
-        case .recentlyUsed, .preview:
-            break
-        case .logoPickerOptions(let options):
-            tableView.deselectRow(at: indexPath, animated: true)
-
-            let option = options[indexPath.row]
-
-            switch option {
-            case .gallery:
-                openPhotoGallery()
-            case .camera:
-                openCamera()
-            // Add handling for more cases as necessary
-            }
-        }
-    }
-
-    private func openPhotoGallery() {
-        var configuration = PHPickerConfiguration()
-        configuration.selectionLimit = 1
-        configuration.filter = .images
-        let pickerViewController = PHPickerViewController(configuration: configuration)
-        pickerViewController.delegate = self
-        present(pickerViewController, animated: true)
-    }
-
-    private func openCamera() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
-                presentCameraPickerViewController()
-            } else {
-                AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
-                    DispatchQueue.main.async {
-                        if granted {
-                            self.presentCameraPickerViewController()
-                        } else {
-                            self.presentEnableCameraPermissionPopup()
-                        }
-                    }
-                })
-            }
-        } else {
-            AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to Access camera", message: "Unfortunately, app is unable to access camera of your device. Please check the device and try again"), parentViewController: self)
-        }
-    }
-
-    private func presentEnableCameraPermissionPopup() {
-        let cameraAccessDeniedActions: [UIAlertAction] = [UIAlertAction(title: "Dismiss", style: .cancel), UIAlertAction(title: "Check Settings", style: .default, handler: { actions in
-            if let url = URL(string:UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        })]
-
-        AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to Access Camera", message: "The app cannot access camera on this device. Please check the camera permissions in settings", actions: cameraAccessDeniedActions), parentViewController: self)
-    }
-
-    private func presentCameraPickerViewController() {
-        cameraImagePickerController.sourceType = .camera
-        cameraImagePickerController.delegate = self
-        self.present(cameraImagePickerController, animated: true)
-    }
-}
-
-extension LogoPickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true)
-        guard let image = info[.originalImage] as? UIImage else {
-            AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to get image", message: "App is unable to get the clicked image. Please try again."), parentViewController: self)
-            return
-        }
-        updatePreview(with: .image(logoImage: image))
-    }
-}
-
-extension LogoPickerViewController: PHPickerViewControllerDelegate {
-    public func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        picker.dismiss(animated: true)
-
-        if let itemProvider = results.first?.itemProvider {
-            if itemProvider.canLoadObject(ofClass: UIImage.self){
-                itemProvider.loadObject(ofClass: UIImage.self) { image , error  in
-                    if let error {
-                        AlertDisplayUtility().showAlert(with: AlertInfo(title: "Unable to load selected image", message: "App is unable to load selected image due to an error \(error.localizedDescription)"), parentViewController: self)
-                    }
-                    if let selectedImage = image as? UIImage{
-                        self.updatePreview(with: .image(logoImage: selectedImage))
-                    }
-                }
-            }
-        }
-    }
 }
 
 //Utility methods
 extension LogoPickerViewController {
+
+    /// A method to update preview with selected logo state
+    /// - Parameter logoState: A new logo state to update preview with
     func updatePreview(with logoState: LogoState) {
         let oldViewModel = self.updatedLogoViewModel
         self.updatedLogoViewModel = LogoView.ViewModel(logoState: logoState, backgroundColor: oldViewModel.backgroundColor, foregroundColor: oldViewModel.foregroundColor, logoContentMode: oldViewModel.logoContentMode, tappable: oldViewModel.tappable)
@@ -368,7 +221,11 @@ extension LogoPickerViewController {
     }
 }
 
+//MARK: ImageSelectionCompletionDelegate delegate
 extension LogoPickerViewController: ImageSelectionCompletionDelegate {
+
+    /// A delegate method to call after image is selected
+    /// - Parameter state: A new logo state
     func imageSelected(state: LogoState) {
         updatePreview(with: state)
     }

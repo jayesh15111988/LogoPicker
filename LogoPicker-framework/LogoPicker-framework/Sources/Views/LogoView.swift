@@ -12,7 +12,8 @@ public protocol TapEventHandalable: AnyObject {
     func logoViewTapped()
 }
 
-public class LogoView: UIView {
+/// A custom view to represent the logo in the app. The screen representation depends on passed LogoState which decides the way logo is displayed to the user
+final public class LogoView: UIView {
 
     private static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
@@ -23,17 +24,17 @@ public class LogoView: UIView {
         static let horizontalSpacing: CGFloat = 10.0
     }
 
-    private let backgroundView: UIView = {
-        let view = UIView(frame: .zero)
-        return view
-    }()
+    //A background view for logo
+    private let backgroundView = UIView(frame: .zero)
 
+    //A label representing initials for current team or the user etc.
     private let initialsLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         return label
     }()
 
+    //An image view representing user selected or current image
     private let logoImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         return imageView
@@ -50,6 +51,13 @@ public class LogoView: UIView {
         let logoContentMode: ContentMode
         let tappable: Bool
 
+        /// A method to initialize view model associated with LogoView
+        /// - Parameters:
+        ///   - logoState: A state indicating the current logo type. Currently support either initials or the actual image
+        ///   - backgroundColor: A background color for logo view
+        ///   - foregroundColor: A text color for logo view title
+        ///   - logoContentMode: Content mod to be applied to presented UIImageView. Defaults to scaleAspectFill enum
+        ///   - tappable: A bool indicating whether logo view is tappable or not. Default to false
         public init(logoState: LogoState, backgroundColor: UIColor, foregroundColor: UIColor, logoContentMode: ContentMode = .scaleAspectFill, tappable: Bool = false) {
 
             self.logoState = logoState
@@ -60,12 +68,14 @@ public class LogoView: UIView {
         }
     }
 
+    //MARK: init
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         addTapGestureRecognizer()
     }
 
+    //MARK: set up views
     private func setupViews() {
         //To support rounded corners
         self.clipsToBounds = true
@@ -75,6 +85,7 @@ public class LogoView: UIView {
         self.addSubview(initialsLabel)
     }
 
+    //MARK: Adding tap gesture recognizer
     private func addTapGestureRecognizer() {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(LogoView.handleTapGesture(_:)))
         self.addGestureRecognizer(recognizer)
@@ -94,6 +105,8 @@ public class LogoView: UIView {
         delegate.logoViewTapped()
     }
 
+    /// A method to configure LogoView with provided view model
+    /// - Parameter viewModel: A view model representing an instance of LogoView.ViewModel used to decorate view
     public func configure(with viewModel:ViewModel) {
         
         self.viewModel = viewModel
@@ -110,7 +123,9 @@ public class LogoView: UIView {
 
         updateLogoState(with: viewModel.logoState)
     }
-
+    
+    /// A method to update current logo state with newly passed state
+    /// - Parameter newState: A state to be applied to current logo view
     public func updateLogoState(with newState: LogoState) {
 
         switch newState {
@@ -119,20 +134,20 @@ public class LogoView: UIView {
             initialsLabel.isHidden = false
             backgroundView.isHidden = false
             logoImageView.isHidden = true
-            self.layer.cornerRadius = self.frame.width / 4.0
         case .image(let logoImage):
             logoImageView.image = logoImage
             backgroundView.isHidden = true
             initialsLabel.isHidden = true
             logoImageView.isHidden = false
-            self.layer.cornerRadius = self.frame.width / 2.0
         }
+        self.layer.cornerRadius = newState.cornerRadius(for: self.frame.width)
     }
-
+    
+    /// A method to reset view state when it is used with reusable table view cells
     func resetState() {
+        viewModel = nil
         initialsLabel.text = nil
         logoImageView.image = nil
-        viewModel = nil
     }
 
     required init?(coder: NSCoder) {

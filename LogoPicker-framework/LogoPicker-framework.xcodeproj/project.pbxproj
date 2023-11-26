@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914E21A12B135BA400FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21A02B135BA400FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift */; };
+		914E21A32B135BFA00FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21A22B135BFA00FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift */; };
+		914E21A62B135E5300FF4CD2 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21A52B135E5300FF4CD2 /* UITableViewHeaderFooterView+Extension.swift */; };
+		914E21A82B1364C300FF4CD2 /* LogoPickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21A72B1364C300FF4CD2 /* LogoPickerViewControllerDelegate.swift */; };
+		914E21AB2B1367E800FF4CD2 /* LogoPickerViewController+PHPickerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21AA2B1367E800FF4CD2 /* LogoPickerViewController+PHPickerViewControllerDelegate.swift */; };
+		914E21AD2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21AC2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift */; };
+		914E21AF2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21AE2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift */; };
+		914E21B22B1369D400FF4CD2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21B12B1369D400FF4CD2 /* Router.swift */; };
 		91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */ = {isa = PBXBuildFile; fileRef = 91783D112B11FE8D00766268 /* LogoPicker_framework.docc */; };
 		91783D182B11FE8E00766268 /* LogoPicker_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91783D0D2B11FE8D00766268 /* LogoPicker_framework.framework */; };
 		91783D1D2B11FE8E00766268 /* LogoPicker_frameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D1C2B11FE8E00766268 /* LogoPicker_frameworkTests.swift */; };
@@ -39,6 +47,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		914E21A02B135BA400FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift"; sourceTree = "<group>"; };
+		914E21A22B135BFA00FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
+		914E21A52B135E5300FF4CD2 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
+		914E21A72B1364C300FF4CD2 /* LogoPickerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPickerViewControllerDelegate.swift; sourceTree = "<group>"; };
+		914E21AA2B1367E800FF4CD2 /* LogoPickerViewController+PHPickerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogoPickerViewController+PHPickerViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		914E21AC2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogoPickerViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
+		914E21AE2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogoPickerViewController+UITableViewDataSourceDelegate.swift"; sourceTree = "<group>"; };
+		914E21B12B1369D400FF4CD2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		91783D0D2B11FE8D00766268 /* LogoPicker_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogoPicker_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91783D102B11FE8D00766268 /* LogoPicker_framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogoPicker_framework.h; sourceTree = "<group>"; };
 		91783D112B11FE8D00766268 /* LogoPicker_framework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = LogoPicker_framework.docc; sourceTree = "<group>"; };
@@ -80,6 +96,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		914E219D2B135B6400FF4CD2 /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				91783D7F2B1259CD00766268 /* UITableViewCell+Extension.swift */,
+			);
+			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		914E219E2B135B6C00FF4CD2 /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				91783D8B2B1336E600766268 /* UICollectionViewCell+Extension.swift */,
+			);
+			path = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
+		914E219F2B135B8C00FF4CD2 /* RecentlyUsedPhotosTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				914E21A02B135BA400FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift */,
+				914E21A22B135BFA00FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift */,
+			);
+			path = RecentlyUsedPhotosTableViewCell;
+			sourceTree = "<group>";
+		};
+		914E21A42B135E4A00FF4CD2 /* UITableViewHeaderFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				914E21A52B135E5300FF4CD2 /* UITableViewHeaderFooterView+Extension.swift */,
+			);
+			path = UITableViewHeaderFooterView;
+			sourceTree = "<group>";
+		};
+		914E21A92B1367CD00FF4CD2 /* LogoPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				914E21AA2B1367E800FF4CD2 /* LogoPickerViewController+PHPickerViewControllerDelegate.swift */,
+				914E21AC2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift */,
+				914E21AE2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift */,
+			);
+			path = LogoPickerViewController;
+			sourceTree = "<group>";
+		};
+		914E21B02B1369CA00FF4CD2 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				914E21B12B1369D400FF4CD2 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		91783D032B11FE8D00766268 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +187,7 @@
 		91783D632B11FEC100766268 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				914E21B02B1369CA00FF4CD2 /* Router */,
 				91C7F7062B134994006B30AD /* Styles */,
 				91783D812B125DF700766268 /* Utilities */,
 				91783D7E2B1259BD00766268 /* Extensions */,
@@ -163,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				91783D792B1246BE00766268 /* ReusableView.swift */,
+				914E21A72B1364C300FF4CD2 /* LogoPickerViewControllerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -180,8 +249,11 @@
 		91783D7E2B1259BD00766268 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				91783D7F2B1259CD00766268 /* UITableViewCell+Extension.swift */,
-				91783D8B2B1336E600766268 /* UICollectionViewCell+Extension.swift */,
+				914E21A92B1367CD00FF4CD2 /* LogoPickerViewController */,
+				914E21A42B135E4A00FF4CD2 /* UITableViewHeaderFooterView */,
+				914E219F2B135B8C00FF4CD2 /* RecentlyUsedPhotosTableViewCell */,
+				914E219E2B135B6C00FF4CD2 /* UICollectionViewCell */,
+				914E219D2B135B6400FF4CD2 /* UITableViewCell */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -314,10 +386,14 @@
 			files = (
 				91783D8A2B1332F000766268 /* RecentImageCollectionViewCell.swift in Sources */,
 				91783D732B121D3900766268 /* LogoState.swift in Sources */,
+				914E21A12B135BA400FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift in Sources */,
 				91783D8C2B1336E600766268 /* UICollectionViewCell+Extension.swift in Sources */,
+				914E21A62B135E5300FF4CD2 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
+				914E21AB2B1367E800FF4CD2 /* LogoPickerViewController+PHPickerViewControllerDelegate.swift in Sources */,
 				91783D752B1226C100766268 /* ImageSource.swift in Sources */,
 				91783D772B12461800766268 /* LogoSelectorTableSectionHeaderView.swift in Sources */,
 				91783D882B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift in Sources */,
+				914E21AD2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				91783D702B12187C00766268 /* LogoPickerViewController.swift in Sources */,
 				91783D802B1259CD00766268 /* UITableViewCell+Extension.swift in Sources */,
 				91C7F7082B1349A4006B30AD /* Color.swift in Sources */,
@@ -325,7 +401,11 @@
 				91783D832B125E0300766268 /* AlertDisplayUtility.swift in Sources */,
 				91783D7A2B1246BE00766268 /* ReusableView.swift in Sources */,
 				91783D6D2B12036A00766268 /* LogoView.swift in Sources */,
+				914E21AF2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift in Sources */,
+				914E21A32B135BFA00FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift in Sources */,
+				914E21A82B1364C300FF4CD2 /* LogoPickerViewControllerDelegate.swift in Sources */,
 				91783D7D2B12531B00766268 /* LogoPreviewTableViewCell.swift in Sources */,
+				914E21B22B1369D400FF4CD2 /* Router.swift in Sources */,
 				91783D862B132C6500766268 /* LogoFrameSize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

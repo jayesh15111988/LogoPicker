@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// An enum to encode logo frame size. Currently only support square layout. Can be extended to support further custom formats 
 public enum LogoFrameSize {
     case square(dimension: CGFloat)
 

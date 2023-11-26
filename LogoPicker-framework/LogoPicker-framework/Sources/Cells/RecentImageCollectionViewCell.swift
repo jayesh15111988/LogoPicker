@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// A collection view cell subclass to show individual recently used image
 final class RecentImageCollectionViewCell: UICollectionViewCell {
 
+    // A view model to encode parameters needed to design recent image cell
     struct ViewModel {
         let image: UIImage
     }
@@ -18,11 +20,9 @@ final class RecentImageCollectionViewCell: UICollectionViewCell {
         static let verticalPadding: CGFloat = 0.0
     }
 
-    let logoView: LogoView = {
-        let logoView = LogoView(frame: .zero)
-        return logoView
-    }()
+    let logoView = LogoView(frame: .zero)
 
+    //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentView.clipsToBounds = true
@@ -34,15 +34,19 @@ final class RecentImageCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: setup views
     private func setupViews() {
         self.contentView.addSubview(logoView)
     }
 
+    //MARK: layout views
     private func layoutViews() {
         logoView.frame = CGRect(origin: CGPoint(x: Constants.horizontalPadding, y: Constants.verticalPadding), size: CGSize(width: self.contentView.bounds.width - (2 * Constants.horizontalPadding), height: self.contentView.bounds.height - (2 * Constants.verticalPadding)))
         logoView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
-
+    
+    /// A method to configure cell with provided view model
+    /// - Parameter viewModel: An instance of LogoView.ViewModel to be applied to LogoView instance
     func configure(with viewModel: LogoView.ViewModel) {
         logoView.configure(with: viewModel)
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// An enum to encode possible image sources from which user can select images
 enum ImageSource {
     case gallery
     case camera
