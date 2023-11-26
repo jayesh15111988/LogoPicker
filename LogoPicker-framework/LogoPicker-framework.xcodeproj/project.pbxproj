@@ -15,6 +15,8 @@
 		914E21AD2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21AC2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift */; };
 		914E21AF2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21AE2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift */; };
 		914E21B22B1369D400FF4CD2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21B12B1369D400FF4CD2 /* Router.swift */; };
+		914E21D12B13979700FF4CD2 /* Styles_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914E21D02B13979700FF4CD2 /* Styles_framework.framework */; };
+		914E21D22B13979700FF4CD2 /* Styles_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 914E21D02B13979700FF4CD2 /* Styles_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */ = {isa = PBXBuildFile; fileRef = 91783D112B11FE8D00766268 /* LogoPicker_framework.docc */; };
 		91783D182B11FE8E00766268 /* LogoPicker_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91783D0D2B11FE8D00766268 /* LogoPicker_framework.framework */; };
 		91783D1D2B11FE8E00766268 /* LogoPicker_frameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D1C2B11FE8E00766268 /* LogoPicker_frameworkTests.swift */; };
@@ -32,7 +34,6 @@
 		91783D882B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D872B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift */; };
 		91783D8A2B1332F000766268 /* RecentImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D892B1332F000766268 /* RecentImageCollectionViewCell.swift */; };
 		91783D8C2B1336E600766268 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D8B2B1336E600766268 /* UICollectionViewCell+Extension.swift */; };
-		91C7F7082B1349A4006B30AD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F7072B1349A4006B30AD /* Color.swift */; };
 		91C7F70A2B134A5E006B30AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C7F7092B134A5E006B30AD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		914E21D32B13979700FF4CD2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				914E21D22B13979700FF4CD2 /* Styles_framework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		914E21A02B135BA400FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift"; sourceTree = "<group>"; };
 		914E21A22B135BFA00FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
@@ -55,6 +70,7 @@
 		914E21AC2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogoPickerViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		914E21AE2B13683500FF4CD2 /* LogoPickerViewController+UITableViewDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogoPickerViewController+UITableViewDataSourceDelegate.swift"; sourceTree = "<group>"; };
 		914E21B12B1369D400FF4CD2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		914E21D02B13979700FF4CD2 /* Styles_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Styles_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91783D0D2B11FE8D00766268 /* LogoPicker_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogoPicker_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91783D102B11FE8D00766268 /* LogoPicker_framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogoPicker_framework.h; sourceTree = "<group>"; };
 		91783D112B11FE8D00766268 /* LogoPicker_framework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = LogoPicker_framework.docc; sourceTree = "<group>"; };
@@ -73,7 +89,6 @@
 		91783D872B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyUsedPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		91783D892B1332F000766268 /* RecentImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		91783D8B2B1336E600766268 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
-		91C7F7072B1349A4006B30AD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		91C7F7092B134A5E006B30AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91783D182B11FE8E00766268 /* LogoPicker_framework.framework in Frameworks */,
+				914E21D12B13979700FF4CD2 /* Styles_framework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,12 +163,21 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		914E21CF2B13979700FF4CD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				914E21D02B13979700FF4CD2 /* Styles_framework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		91783D032B11FE8D00766268 = {
 			isa = PBXGroup;
 			children = (
 				91783D0F2B11FE8D00766268 /* LogoPicker-framework */,
 				91783D1B2B11FE8E00766268 /* LogoPicker-frameworkTests */,
 				91783D0E2B11FE8D00766268 /* Products */,
+				914E21CF2B13979700FF4CD2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				914E21B02B1369CA00FF4CD2 /* Router */,
-				91C7F7062B134994006B30AD /* Styles */,
 				91783D812B125DF700766268 /* Utilities */,
 				91783D7E2B1259BD00766268 /* Extensions */,
 				91783D7B2B12507500766268 /* Cells */,
@@ -266,14 +290,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		91C7F7062B134994006B30AD /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				91C7F7072B1349A4006B30AD /* Color.swift */,
-			);
-			path = Styles;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -313,6 +329,7 @@
 				91783D132B11FE8E00766268 /* Sources */,
 				91783D142B11FE8E00766268 /* Frameworks */,
 				91783D152B11FE8E00766268 /* Resources */,
+				914E21D32B13979700FF4CD2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -396,7 +413,6 @@
 				914E21AD2B1367F900FF4CD2 /* LogoPickerViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				91783D702B12187C00766268 /* LogoPickerViewController.swift in Sources */,
 				91783D802B1259CD00766268 /* UITableViewCell+Extension.swift in Sources */,
-				91C7F7082B1349A4006B30AD /* Color.swift in Sources */,
 				91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */,
 				91783D832B125E0300766268 /* AlertDisplayUtility.swift in Sources */,
 				91783D7A2B1246BE00766268 /* ReusableView.swift in Sources */,

@@ -8,6 +8,7 @@
 import UIKit
 
 import LogoPicker_framework
+import Styles_framework
 
 typealias LogoViewModel = LogoView.ViewModel
 
@@ -31,7 +32,7 @@ final class ViewController: UIViewController {
     private let logoTitleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.textColor = Color.defaultText
+        label.textColor = Style.shared.defaultTextColor
         return label
     }()
 
@@ -39,7 +40,7 @@ final class ViewController: UIViewController {
     private let logoSubtitleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = Color.subtleText
+        label.textColor = Style.shared.subtleTextColor
         return label
     }()
 
@@ -48,6 +49,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         layoutViews()
+        self.view.backgroundColor = Style.shared.backgroundColor
     }
 
     //MARK: Private methods
@@ -69,7 +71,14 @@ final class ViewController: UIViewController {
     private func layoutViews() {
 
         logoView.frame.origin = CGPoint(x: Constants.horizontalSpacing, y: self.view.bounds.midY - logoView.frame.height / 2.0)
-        logoView.configure(with: LogoViewModel(logoState: logoState, backgroundColor: Color.logoBackground, foregroundColor: Color.logoForeground, logoContentMode: .scaleAspectFill, tappable: true))
+
+        logoView.configure(with: LogoViewModel(
+            logoState: logoState,
+            backgroundColor: Style.shared.logoBackgroundColor,
+            foregroundColor: Style.shared.logoForegroundColor,
+            logoContentMode: .scaleAspectFill,
+            tappable: true
+        ))
 
         let titlesHorizontalSpacing = Constants.horizontalSpacing * 2 + logoView.frame.width
         let titlesWidth = self.view.frame.width - 2 * Constants.horizontalSpacing - Constants.horizontalSpacing - logoView.frame.width

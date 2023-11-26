@@ -8,6 +8,8 @@
 import UIKit
 import OSLog
 
+import Styles_framework
+
 /// A main class for facilitating user to view, preview and select logo. This can be re-used at any place that needs replacing the logo. For example, section, teams, profile etc.
 final public class LogoPickerViewController: UIViewController {
 
@@ -93,7 +95,11 @@ final public class LogoPickerViewController: UIViewController {
             self.logoFrameSize = logoFrameSize
             self.selectedLogoState = logoViewModel.logoState
 
-            let recentImagesLogoViewModels: [LogoView.ViewModel] = recentImages.map { .init(logoState: .image(logoImage: $0), backgroundColor: Color.logoBackground, foregroundColor: Color.logoForeground) }
+            let recentImagesLogoViewModels: [LogoView.ViewModel] = recentImages.map { LogoView.ViewModel(
+                logoState: .image(logoImage: $0),
+                backgroundColor: Style.shared.logoBackgroundColor,
+                foregroundColor: Style.shared.logoForegroundColor
+            ) }
 
             self.sections = [.recentlyUsed(recentImagesLogoViewModels), .preview, .logoPickerOptions([.gallery, .camera])]
         }
@@ -162,7 +168,7 @@ final public class LogoPickerViewController: UIViewController {
     //MARK: set up views
     private func setupViews() {
 
-        self.view.backgroundColor = Color.background
+        self.view.backgroundColor = Style.shared.backgroundColor
         self.view.addSubview(cancelButton)
         self.view.addSubview(doneButton)
         self.view.addSubview(tableView)

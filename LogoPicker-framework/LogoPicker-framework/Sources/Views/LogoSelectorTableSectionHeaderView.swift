@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Styles_framework
 
 /// A custom header view to show different sections on image picker controller
 final public class LogoSelectorTableSectionHeaderView: UITableViewHeaderFooterView {
@@ -24,7 +25,7 @@ final public class LogoSelectorTableSectionHeaderView: UITableViewHeaderFooterVi
 
     private let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.textColor = Color.defaultText
+        label.textColor = Style.shared.defaultTextColor
         label.textAlignment = .center
         return label
     }()
@@ -41,7 +42,7 @@ final public class LogoSelectorTableSectionHeaderView: UITableViewHeaderFooterVi
     //MARK: Private methods
     private func setupViews() {
         self.addSubview(titleLabel)
-        self.contentView.backgroundColor = Color.sectionHeaderBackground
+        self.contentView.backgroundColor = Style.shared.sectionHeaderBackgroundColor
     }
     
     /// A method to configure header with provided view model

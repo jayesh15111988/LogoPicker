@@ -8,6 +8,7 @@
 import UIKit
 
 import LogoPicker_framework
+import Styles_framework
 
 extension ViewController: TapEventHandalable {
 
@@ -32,8 +33,8 @@ extension ViewController: TapEventHandalable {
             viewModel: LogoPickerViewController.ViewModel(
                 logoViewModel: LogoViewModel(
                     logoState: logoState,
-                    backgroundColor: Color.logoBackground,
-                    foregroundColor: Color.logoForeground,
+                    backgroundColor: Style.shared.logoBackgroundColor,
+                    foregroundColor: Style.shared.logoForegroundColor,
                     logoContentMode: .scaleAspectFill),
                 logoFrameSize: .square(dimension: self.logoView.frame.size.width),
                 recentImages: recentImages)
