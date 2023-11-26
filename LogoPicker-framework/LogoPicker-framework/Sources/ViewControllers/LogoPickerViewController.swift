@@ -18,6 +18,9 @@ public class LogoPickerViewController: UIViewController {
 
     enum Constants {
         static let verticalPadding: CGFloat = 10.0
+        static let recentImagesSectionHeight: CGFloat = 84.0
+        static let imageSourceSectionHeight: CGFloat = 44.0
+        static let defaultSectionHeaderHeight: CGFloat = 44.0
     }
 
     private let cameraImagePickerController: UIImagePickerController = {
@@ -63,9 +66,7 @@ public class LogoPickerViewController: UIViewController {
 
             var selectionStyle: UITableViewCell.SelectionStyle {
                 switch self {
-                case .recentlyUsed:
-                    return .none
-                case .preview:
+                case .recentlyUsed, .preview:
                     return .none
                 case .logoPickerOptions:
                     return .default
@@ -85,7 +86,7 @@ public class LogoPickerViewController: UIViewController {
             self.logoFrameSize = logoFrameSize
             self.selectedLogoState = logoViewModel.logoState
 
-            let recentImagesLogoViewModels: [LogoView.ViewModel] = recentImages.map { .init(logoState: .image(logoImage: $0), backgroundColor: .lightGray, foregroundColor: .clear) }
+            let recentImagesLogoViewModels: [LogoView.ViewModel] = recentImages.map { .init(logoState: .image(logoImage: $0), backgroundColor: Color.logoBackground, foregroundColor: Color.logoForeground) }
 
             self.sections = [.recentlyUsed(recentImagesLogoViewModels), .preview, .logoPickerOptions([.gallery, .camera])]
         }
@@ -147,7 +148,7 @@ public class LogoPickerViewController: UIViewController {
     }
 
     private func setupViews() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = Color.background
         self.view.addSubview(cancelButton)
         self.view.addSubview(doneButton)
         self.view.addSubview(tableView)
@@ -234,7 +235,7 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44.0
+        return Constants.defaultSectionHeaderHeight
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -242,11 +243,11 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
 
         switch section {
         case .recentlyUsed:
-            return 84
+            return Constants.recentImagesSectionHeight
         case .preview:
             return viewModel.logoFrameSize.height + (Constants.verticalPadding * 2)
         case .logoPickerOptions:
-            return 44
+            return Constants.imageSourceSectionHeight
         }
     }
 

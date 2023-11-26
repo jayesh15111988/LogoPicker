@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914E21942B134AE000FF4CD2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914E21932B134AE000FF4CD2 /* Color.swift */; };
 		91783D342B11FEA100766268 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D332B11FEA100766268 /* AppDelegate.swift */; };
 		91783D362B11FEA100766268 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D352B11FEA100766268 /* SceneDelegate.swift */; };
 		91783D382B11FEA100766268 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D372B11FEA100766268 /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		914E21932B134AE000FF4CD2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		91783D302B11FEA100766268 /* LogoPicker-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LogoPicker-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91783D332B11FEA100766268 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91783D352B11FEA100766268 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				91783D3C2B11FEA300766268 /* Assets.xcassets */,
 				91783D3E2B11FEA300766268 /* LaunchScreen.storyboard */,
 				91783D412B11FEA300766268 /* Info.plist */,
+				914E21932B134AE000FF4CD2 /* Color.swift */,
 			);
 			path = "LogoPicker-iOS";
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91783D382B11FEA100766268 /* ViewController.swift in Sources */,
+				914E21942B134AE000FF4CD2 /* Color.swift in Sources */,
 				91783D342B11FEA100766268 /* AppDelegate.swift in Sources */,
 				91783D362B11FEA100766268 /* SceneDelegate.swift in Sources */,
 			);

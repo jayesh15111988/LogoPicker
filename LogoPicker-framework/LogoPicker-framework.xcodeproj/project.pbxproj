@@ -24,6 +24,8 @@
 		91783D882B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D872B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift */; };
 		91783D8A2B1332F000766268 /* RecentImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D892B1332F000766268 /* RecentImageCollectionViewCell.swift */; };
 		91783D8C2B1336E600766268 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D8B2B1336E600766268 /* UICollectionViewCell+Extension.swift */; };
+		91C7F7082B1349A4006B30AD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7F7072B1349A4006B30AD /* Color.swift */; };
+		91C7F70A2B134A5E006B30AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C7F7092B134A5E006B30AD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		91783D872B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyUsedPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		91783D892B1332F000766268 /* RecentImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		91783D8B2B1336E600766268 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		91C7F7072B1349A4006B30AD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		91C7F7092B134A5E006B30AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 				91783D632B11FEC100766268 /* Sources */,
 				91783D102B11FE8D00766268 /* LogoPicker_framework.h */,
 				91783D112B11FE8D00766268 /* LogoPicker_framework.docc */,
+				91C7F7092B134A5E006B30AD /* Assets.xcassets */,
 			);
 			path = "LogoPicker-framework";
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 		91783D632B11FEC100766268 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				91C7F7062B134994006B30AD /* Styles */,
 				91783D812B125DF700766268 /* Utilities */,
 				91783D7E2B1259BD00766268 /* Extensions */,
 				91783D7B2B12507500766268 /* Cells */,
@@ -186,6 +192,14 @@
 				91783D822B125E0300766268 /* AlertDisplayUtility.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		91C7F7062B134994006B30AD /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				91C7F7072B1349A4006B30AD /* Color.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91C7F70A2B134A5E006B30AD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +320,7 @@
 				91783D882B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift in Sources */,
 				91783D702B12187C00766268 /* LogoPickerViewController.swift in Sources */,
 				91783D802B1259CD00766268 /* UITableViewCell+Extension.swift in Sources */,
+				91C7F7082B1349A4006B30AD /* Color.swift in Sources */,
 				91783D122B11FE8D00766268 /* LogoPicker_framework.docc in Sources */,
 				91783D832B125E0300766268 /* AlertDisplayUtility.swift in Sources */,
 				91783D7A2B1246BE00766268 /* ReusableView.swift in Sources */,

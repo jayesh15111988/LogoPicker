@@ -26,14 +26,14 @@ class ViewController: UIViewController {
     private let logoTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.textColor = .black
+        label.textColor = Color.defaultText
         return label
     }()
 
     private let logoSubtitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .darkGray
+        label.textColor = Color.subtleText
         return label
     }()
 
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
 
     private func layoutViews() {
         logoView.frame.origin = CGPoint(x: Constants.horizontalSpacing, y: self.view.bounds.midY - logoView.frame.height / 2.0)
-        logoView.configure(with: ViewModel(logoState: logoState, backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFill, tappable: true))
+        logoView.configure(with: ViewModel(logoState: logoState, backgroundColor: Color.logoBackground, foregroundColor: Color.logoForeground, logoContentMode: .scaleAspectFill, tappable: true))
 
         let titlesHorizontalSpacing = Constants.horizontalSpacing * 2 + logoView.frame.width
         let titlesWidth = self.view.frame.width - 2 * Constants.horizontalSpacing - Constants.horizontalSpacing - logoView.frame.width
@@ -77,7 +77,7 @@ extension ViewController: TapEventHandalable {
 
         let recentImages = [UIImage(named: "placeholder_1"), UIImage(named: "placeholder"), UIImage(named: "placeholder_2"), UIImage(named: "placeholder"), UIImage(named: "placeholder"), UIImage(named: "placeholder_3"), UIImage(named: "placeholder"), UIImage(named: "placeholder"), UIImage(named: "placeholder_1")].compactMap { $0 }
 
-        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: logoState, backgroundColor: .blue, foregroundColor: .white, logoContentMode: .scaleAspectFill, tappable: false), logoFrameSize: .square(dimension: self.logoView.frame.size.width), recentImages: recentImages))
+        let logoPickerViewController = LogoPickerViewController(viewModel: LogoPickerViewController.ViewModel(logoViewModel: ViewModel(logoState: logoState, backgroundColor: Color.logoBackground, foregroundColor: Color.logoForeground, logoContentMode: .scaleAspectFill, tappable: false), logoFrameSize: .square(dimension: self.logoView.frame.size.width), recentImages: recentImages))
         logoPickerViewController.delegate = self
         self.present(logoPickerViewController, animated: true)
     }
