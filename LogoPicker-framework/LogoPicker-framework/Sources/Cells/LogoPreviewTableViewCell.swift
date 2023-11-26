@@ -23,8 +23,8 @@ class LogoPreviewTableViewCell: UITableViewCell {
         self.contentView.addSubview(logoView)
     }
 
-    func configure(with viewModel: LogoView.ViewModel, logoFrameSize: CGSize) {
-        logoView.frame.size = logoFrameSize
+    func configure(with viewModel: LogoView.ViewModel, logoFrameSize: LogoFrameSize) {
+        logoView.frame.size = CGSize(width: logoFrameSize.width, height: logoFrameSize.height)
         logoView.center = self.contentView.center
         logoView.configure(with: viewModel)
         logoView.backgroundColor = .red

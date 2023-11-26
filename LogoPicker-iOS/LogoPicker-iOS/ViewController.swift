@@ -60,7 +60,7 @@ class ViewController: UIViewController {
 
         let titlesHorizontalSpacing = Constants.horizontalSpacing * 2 + logoView.frame.width
         let titlesWidth = self.view.frame.width - 2 * Constants.horizontalSpacing - Constants.horizontalSpacing - logoView.frame.width
-        let titlesHeight = logoView.frame.height / 4.0
+        let titlesHeight = logoView.frame.height / 3.0
         let yOffsetFromCenter = logoView.frame.height / 4.0
 
         logoTitleLabel.frame = CGRect(origin: CGPoint(x: titlesHorizontalSpacing, y: self.logoView.center.y - yOffsetFromCenter), size: CGSize(width: titlesWidth, height: titlesHeight))

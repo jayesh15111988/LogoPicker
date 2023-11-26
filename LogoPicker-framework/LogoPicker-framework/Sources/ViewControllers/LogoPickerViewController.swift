@@ -71,11 +71,11 @@ public class LogoPickerViewController: UIViewController {
 
         var logoViewModel: LogoView.ViewModel
         let title: String
-        let logoFrameSize: CGSize
+        let logoFrameSize: LogoFrameSize
         var selectedLogoState: LogoState
         let sections: [Sections]
 
-        public init(logoViewModel: LogoView.ViewModel, title: String = "Change Logo", logoFrameSize: CGSize = CGSize(width: 50, height: 50)) {
+        public init(logoViewModel: LogoView.ViewModel, title: String = "Change Logo", logoFrameSize: LogoFrameSize = .square(dimension: 100)) {
             self.logoViewModel = logoViewModel
             self.title = title
             self.logoFrameSize = logoFrameSize

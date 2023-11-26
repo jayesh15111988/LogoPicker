@@ -20,6 +20,7 @@
 		91783D7D2B12531B00766268 /* LogoPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D7C2B12531B00766268 /* LogoPreviewTableViewCell.swift */; };
 		91783D802B1259CD00766268 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D7F2B1259CD00766268 /* UITableViewCell+Extension.swift */; };
 		91783D832B125E0300766268 /* AlertDisplayUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D822B125E0300766268 /* AlertDisplayUtility.swift */; };
+		91783D862B132C6500766268 /* LogoFrameSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D852B132C6500766268 /* LogoFrameSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		91783D7C2B12531B00766268 /* LogoPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPreviewTableViewCell.swift; sourceTree = "<group>"; };
 		91783D7F2B1259CD00766268 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		91783D822B125E0300766268 /* AlertDisplayUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayUtility.swift; sourceTree = "<group>"; };
+		91783D852B132C6500766268 /* LogoFrameSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoFrameSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				91783D722B121D3900766268 /* LogoState.swift */,
 				91783D742B1226C100766268 /* ImageSource.swift */,
+				91783D852B132C6500766268 /* LogoFrameSize.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				91783D7A2B1246BE00766268 /* ReusableView.swift in Sources */,
 				91783D6D2B12036A00766268 /* LogoView.swift in Sources */,
 				91783D7D2B12531B00766268 /* LogoPreviewTableViewCell.swift in Sources */,
+				91783D862B132C6500766268 /* LogoFrameSize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
