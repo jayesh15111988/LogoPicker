@@ -17,6 +17,7 @@ extension ViewController: TapEventHandalable {
         //The main logo picker view controller which will allow users to choose the logo image of their choice
         let logoPickerViewModel = LogoPickerViewController.ViewModel(
             logoViewModel: LogoViewModel(logoState: logoState),
+            title: "Robert Langdon",
             logoFrameSize: .square(dimension: 150)
         )
 

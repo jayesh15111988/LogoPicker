@@ -92,8 +92,8 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
                                          logoViewModels: [LogoView.ViewModel]
     ) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RecentlyUsedPhotosTableViewCell.reuseIdentifier, for: indexPath) as? RecentlyUsedPhotosTableViewCell else {
-            fatalError("Failed to get expected kind of reusable cell from the tableView. Expected RecentlyUsedPhotosTableViewCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LogoMediaTableViewCell.reuseIdentifier, for: indexPath) as? LogoMediaTableViewCell else {
+            fatalError("Failed to get expected kind of reusable cell from the tableView. Expected LogoMediaTableViewCell")
         }
 
         cell.selectionStyle = section.selectionStyle

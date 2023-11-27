@@ -1,5 +1,5 @@
 //
-//  RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateFlowLayout.swift
+//  LogoMediaTableViewCell+UICollectionViewDelegateFlowLayout.swift
 //  LogoPicker-framework
 //
 //  Created by Jayesh Kawli on 11/26/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension RecentlyUsedPhotosTableViewCell: UICollectionViewDelegateFlowLayout {
+extension LogoMediaTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         //Passed frame size by caller

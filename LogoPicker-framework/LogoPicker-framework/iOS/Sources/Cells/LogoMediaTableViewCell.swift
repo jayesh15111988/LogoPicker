@@ -1,5 +1,5 @@
 //
-//  RecentlyUsedPhotosTableViewCell.swift
+//  LogoMediaTableViewCell.swift
 //  LogoPicker-framework
 //
 //  Created by Jayesh Kawli on 11/26/23.
@@ -17,11 +17,11 @@ protocol ImageSelectionCompletionDelegate: AnyObject {
     func imageSelected(state: LogoState)
 }
 
-final class RecentlyUsedPhotosTableViewCell: UITableViewCell {
+final class LogoMediaTableViewCell: UITableViewCell {
 
     static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
-        category: String(describing: RecentlyUsedPhotosTableViewCell.self)
+        category: String(describing: LogoMediaTableViewCell.self)
     )
 
     var frameSize: LogoFrameSize?
@@ -54,7 +54,7 @@ final class RecentlyUsedPhotosTableViewCell: UITableViewCell {
 
     //MARK: register cells
     private func registerCells() {
-        collectionView.register(RecentImageCollectionViewCell.self, forCellWithReuseIdentifier: RecentImageCollectionViewCell.reuseIdentifier)
+        collectionView.register(LogoMediaCollectionViewCell.self, forCellWithReuseIdentifier: LogoMediaCollectionViewCell.reuseIdentifier)
     }
 
     //MARK: setup views

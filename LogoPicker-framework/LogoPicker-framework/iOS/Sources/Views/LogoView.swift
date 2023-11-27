@@ -21,7 +21,7 @@ final public class LogoView: UIView {
     )
 
     enum Constants {
-        static let horizontalSpacing: CGFloat = 10.0
+        static let horizontalPadding: CGFloat = 10.0
     }
 
     //A background view for logo
@@ -105,7 +105,8 @@ final public class LogoView: UIView {
         self.backgroundView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: self.frame.width, height: self.frame.height))
         self.logoImageView.frame = self.backgroundView.frame
 
-        self.initialsLabel.frame.size = CGSize(width: self.frame.width - 2 * Constants.horizontalSpacing, height: self.frame.height / 3.0)
+        self.initialsLabel.frame.size = CGSize(width: self.frame.width - 2 * Constants.horizontalPadding, height: self.frame.height / 3.0)
+
         self.initialsLabel.center = CGPointMake(bounds.midX, bounds.midY)
 
         updateLogoState(with: viewModel.logoState)
@@ -115,6 +116,7 @@ final public class LogoView: UIView {
     /// - Parameter newState: A state to be applied to current logo view
     public func updateLogoState(with newState: LogoState) {
 
+        // Customize logo view based on the updated state
         switch newState {
         case .initials(let viewModel):
 

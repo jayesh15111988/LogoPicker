@@ -8,6 +8,7 @@
 import UIKit
 
 /// A table view cell to show the preview of currently selected logo image
+/// It could either be an image or stylized initials
 final class LogoPreviewTableViewCell: UITableViewCell {
 
     private let logoView: LogoView = {

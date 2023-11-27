@@ -11,6 +11,7 @@ import Foundation
 enum ImageSource {
     case gallery
     case camera
+
     //Add new cases and the code to handle as necessary in the future
 
     var title: String {
