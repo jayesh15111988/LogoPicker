@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Styles_framework
+
 /// Dummy class to store recently used images in the cache
 final public class ImageCache {
 
@@ -21,15 +23,17 @@ final public class ImageCache {
 
         let bundle = Bundle(for: type(of: self))
 
+        let genericPlaceholderImage = Style.shared.profilePlaceholder
+
         recentImageCollection = [
             UIImage(named: "placeholder_1", in: bundle, with: nil),
-            UIImage(named: "placeholder", in: bundle, with: nil),
+            genericPlaceholderImage,
             UIImage(named: "placeholder_2", in: bundle, with: nil),
+            genericPlaceholderImage,
             UIImage(named: "placeholder", in: bundle, with: nil),
+            genericPlaceholderImage,
             UIImage(named: "placeholder", in: bundle, with: nil),
-            UIImage(named: "placeholder_3", in: bundle, with: nil),
-            UIImage(named: "placeholder", in: bundle, with: nil),
-            UIImage(named: "placeholder", in: bundle, with: nil),
+            genericPlaceholderImage,
             UIImage(named: "placeholder_1", in: bundle, with: nil)
         ]
             .compactMap { $0 }

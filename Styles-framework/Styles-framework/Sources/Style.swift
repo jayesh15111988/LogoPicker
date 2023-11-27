@@ -46,6 +46,11 @@ public final class Style {
     public lazy var sectionHeaderBackgroundColor: UIColor = {
         UIColor(named: "sectionHeaderBackground", in: self.bundle, compatibleWith: nil)!
     }()
+
+    public lazy var profilePlaceholder: UIImage = {
+        UIImage(named: "profile_placeholder", in: self.bundle, with: nil)!
+    }()
+
 #elseif os(OSX)
     public lazy var defaultTextColor: NSColor = {
         NSColor(named: "defaultTextColor", bundle: self.bundle)!
@@ -70,5 +75,10 @@ public final class Style {
     public lazy var sectionHeaderBackgroundColor: NSColor = {
         NSColor(named: "sectionHeaderBackground", bundle: self.bundle)!
     }()
+
+    public lazy var profilePlaceholder: NSImage = {
+        NSImage(symbolName: "profile_placeholder", bundle: self.bundle, variableValue: 0)!
+    }()
+
 #endif
 }

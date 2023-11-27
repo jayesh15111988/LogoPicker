@@ -36,6 +36,7 @@
 		91783D882B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D872B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift */; };
 		91783D8A2B1332F000766268 /* RecentImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D892B1332F000766268 /* RecentImageCollectionViewCell.swift */; };
 		91783D8C2B1336E600766268 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91783D8B2B1336E600766268 /* UICollectionViewCell+Extension.swift */; };
+		917887732B14903D004822EC /* ColorProviderUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917887722B14903D004822EC /* ColorProviderUtility.swift */; };
 		91C7F70A2B134A5E006B30AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C7F7092B134A5E006B30AD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		91783D872B132D6700766268 /* RecentlyUsedPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyUsedPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		91783D892B1332F000766268 /* RecentImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		91783D8B2B1336E600766268 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		917887722B14903D004822EC /* ColorProviderUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProviderUtility.swift; sourceTree = "<group>"; };
 		91C7F7092B134A5E006B30AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				91783D822B125E0300766268 /* AlertDisplayUtility.swift */,
+				917887722B14903D004822EC /* ColorProviderUtility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				91783D8A2B1332F000766268 /* RecentImageCollectionViewCell.swift in Sources */,
 				91783D732B121D3900766268 /* LogoState.swift in Sources */,
 				914E21A12B135BA400FF4CD2 /* RecentlyUsedPhotosTableViewCell+UICollectionViewDelegateDataSource.swift in Sources */,
+				917887732B14903D004822EC /* ColorProviderUtility.swift in Sources */,
 				91783D8C2B1336E600766268 /* UICollectionViewCell+Extension.swift in Sources */,
 				914E21A62B135E5300FF4CD2 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
 				914E21AB2B1367E800FF4CD2 /* LogoPickerViewController+PHPickerViewControllerDelegate.swift in Sources */,

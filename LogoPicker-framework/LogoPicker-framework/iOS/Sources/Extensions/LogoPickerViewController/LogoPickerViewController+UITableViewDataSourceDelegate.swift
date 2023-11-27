@@ -12,31 +12,33 @@ import PhotosUI
 extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let section = viewModel.sections[indexPath.section]
+        let section = sections[indexPath.section]
 
         switch section {
         case .recentlyUsed(let logoViewModels):
-            return recentlyUsedSectionCell(tableView, indexPath: indexPath, section: section, logoViewModels: logoViewModels)
+            return mediaSectionCell(tableView, indexPath: indexPath, section: section, logoViewModels: logoViewModels)
         case .preview:
             return previewSectionCell(tableView, indexPath: indexPath, section: section)
         case .logoPickerOptions(let options):
             return pickerSectionCell(tableView, indexPath: indexPath, section: section, options: options)
+        case .foregroundColor(let logoViewModels), .backgroundColor(let logoViewModels):
+            return mediaSectionCell(tableView, indexPath: indexPath, section: section, logoViewModels: logoViewModels)
         }
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.sections[section].itemCount
+        return sections[section].itemCount
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.sections.count
+        return sections.count
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: LogoSelectorTableSectionHeaderView.reuseIdentifier) as? LogoSelectorTableSectionHeaderView else {
             fatalError("Could not find expected custom header view class LogoSelectorTableSectionHeaderView. Expected to find the reusable header view LogoSelectorTableSectionHeaderView for sections header")
         }
-        headerView.configure(with: LogoSelectorTableSectionHeaderView.ViewModel(title: viewModel.sections[section].title))
+        headerView.configure(with: LogoSelectorTableSectionHeaderView.ViewModel(title: sections[section].title))
 
         return headerView
     }
@@ -46,7 +48,7 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = viewModel.sections[indexPath.section]
+        let section = sections[indexPath.section]
 
         switch section {
         case .recentlyUsed:
@@ -55,14 +57,16 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
             return viewModel.logoFrameSize.height + (Constants.verticalPadding * 2)
         case .logoPickerOptions:
             return Constants.imageSourceSectionHeight
+        case .foregroundColor, .backgroundColor:
+            return Constants.colorsSelectionSectionHeight
         }
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = viewModel.sections[indexPath.section]
+        let section = sections[indexPath.section]
 
         switch section {
-        case .recentlyUsed, .preview:
+        case .recentlyUsed, .preview, .foregroundColor, .backgroundColor:
             break
         case .logoPickerOptions(let options):
             tableView.deselectRow(at: indexPath, animated: true)
@@ -81,7 +85,7 @@ extension LogoPickerViewController: UITableViewDataSource, UITableViewDelegate {
 
     //MARK: Private methods
 
-    private func recentlyUsedSectionCell(_ 
+    private func mediaSectionCell(_
                                          tableView: UITableView,
                                          indexPath: IndexPath,
                                          section: ViewModel.Section,

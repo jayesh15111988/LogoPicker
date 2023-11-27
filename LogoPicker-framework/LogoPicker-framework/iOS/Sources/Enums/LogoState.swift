@@ -36,26 +36,80 @@ public enum LogoState {
         }
     }
 
+    public struct ColorViewModel {
+
+        public enum ColorType {
+            case foreground
+            case background
+        }
+
+        let color: UIColor
+        let type: ColorType
+
+        public init(color: UIColor, type: ColorType) {
+            self.color = color
+            self.type = type
+        }
+    }
+
     case initials(viewModel: InitialsViewModel)
     case image(viewModel: ImageViewModel)
+    case color(viewModel: ColorViewModel)
 
     func cornerRadius(for width: CGFloat) -> CGFloat {
         switch self {
         case .initials:
             return width / 4.0
-        case .image:
+        case .image, .color:
             return width / 2.0
         }
     }
 
     var selectedImage: UIImage? {
         switch self {
-        case .initials:
+        case .initials, .color:
             return nil
         case .image(let logoImage):
             return logoImage.image
         }
     }
+
+    var contentMode: UIView.ContentMode? {
+        switch self {
+        case .initials, .color:
+            return nil
+        case .image(let logoImage):
+            return logoImage.contentMode
+        }
+    }
+
+    var foregroundColor: UIColor? {
+        switch self {
+        case .image, .color:
+            return nil
+        case .initials(let viewModel):
+            return viewModel.titleColor
+        }
+    }
+
+    var backgroundColor: UIColor? {
+        switch self {
+        case .image, .color:
+            return nil
+        case .initials(let viewModel):
+            return viewModel.backgroundColor
+        }
+    }
+
+    var name: String? {
+        switch self {
+        case .image, .color:
+            return nil
+        case .initials(let viewModel):
+            return viewModel.name
+        }
+    }
+
 }
 
 //Source: https://stackoverflow.com/a/64576199

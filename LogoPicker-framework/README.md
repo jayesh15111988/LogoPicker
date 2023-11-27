@@ -87,7 +87,7 @@ For `LogoView` with image instance
 let logoView = LogoView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 75, height: 75)))
 
 logoView.configure(with: LogoViewModel(
-            logoState: .image(logoImage: UIImage(named: "placeholder")!),
+            logoState: .image(logoImage: UIImage(named: "placeholder_1")!),
             backgroundColor: Style.shared.logoBackgroundColor,
             foregroundColor: Style.shared.logoForegroundColor,
             logoContentMode: .scaleAspectFill,
@@ -115,7 +115,7 @@ let logoPickerViewController = LogoPickerViewController(
                     backgroundColor: Style.shared.logoBackgroundColor,
                     foregroundColor: Style.shared.logoForegroundColor,
                     logoContentMode: .scaleAspectFill),
-                logoFrameSize: .square(dimension: 200)
+                logoFrameSize: .square(dimension: 150)
             )
         )
 

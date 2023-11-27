@@ -134,6 +134,14 @@ final public class LogoView: UIView {
             backgroundView.isHidden = true
             initialsLabel.isHidden = true
             logoImageView.isHidden = false
+
+        case .color(let viewModel):
+
+            backgroundView.backgroundColor = viewModel.color
+
+            backgroundView.isHidden = false
+            initialsLabel.isHidden = true
+            logoImageView.isHidden = true
         }
 
         self.layer.cornerRadius = newState.cornerRadius(for: self.frame.width)

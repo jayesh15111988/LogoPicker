@@ -18,6 +18,7 @@ final public class LogoPickerViewController: UIViewController {
         static let recentImagesSectionHeight: CGFloat = 84.0
         static let imageSourceSectionHeight: CGFloat = 44.0
         static let defaultSectionHeaderHeight: CGFloat = 54.0
+        static let colorsSelectionSectionHeight: CGFloat = 84.0
     }
 
     let cameraImagePickerController = UIImagePickerController()
@@ -39,6 +40,8 @@ final public class LogoPickerViewController: UIViewController {
             case recentlyUsed([LogoView.ViewModel])
             case preview
             case logoPickerOptions([ImageSource])
+            case foregroundColor([LogoView.ViewModel])
+            case backgroundColor([LogoView.ViewModel])
 
             var title: String {
                 switch self {
@@ -48,14 +51,16 @@ final public class LogoPickerViewController: UIViewController {
                     return "Preview"
                 case .logoPickerOptions:
                     return "Picker Options"
+                case .foregroundColor:
+                    return "Initials Title Color"
+                case .backgroundColor:
+                    return "Initials Background Color"
                 }
             }
 
             var itemCount: Int {
                 switch self {
-                case .recentlyUsed:
-                    return 1
-                case .preview:
+                case .recentlyUsed, .preview, .foregroundColor, .backgroundColor:
                     return 1
                 case .logoPickerOptions(let pickerSources):
                     return pickerSources.count
@@ -64,7 +69,7 @@ final public class LogoPickerViewController: UIViewController {
 
             var selectionStyle: UITableViewCell.SelectionStyle {
                 switch self {
-                case .recentlyUsed, .preview:
+                case .recentlyUsed, .preview, .foregroundColor, .backgroundColor:
                     return .none
                 case .logoPickerOptions:
                     return .default
@@ -72,12 +77,17 @@ final public class LogoPickerViewController: UIViewController {
             }
         }
 
-        var logoViewModel: LogoView.ViewModel
+        let logoViewModel: LogoView.ViewModel
         let title: String
         let logoFrameSize: LogoFrameSize
-        var selectedLogoState: LogoState
-        let sections: [Section]
-        
+
+        let initialsLogoState: LogoState?
+        let imageLogoState: LogoState?
+
+        var showingSegmentedControl: Bool {
+            return initialsLogoState != nil
+        }
+
         /// An initializer for creating an instance of LogoPickerViewController.ViewModel struct
         /// - Parameters:
         ///   - logoViewModel: A view model to be applied to LogoView
@@ -86,23 +96,74 @@ final public class LogoPickerViewController: UIViewController {
         public init(
             logoViewModel: LogoView.ViewModel,
             title: String = "Change Logo",
-            logoFrameSize: LogoFrameSize = .square(dimension: 200)
+            logoFrameSize: LogoFrameSize = .square(dimension: 150)
         ) {
             self.logoViewModel = logoViewModel
             self.title = title
             self.logoFrameSize = logoFrameSize
-            self.selectedLogoState = logoViewModel.logoState
 
-            let recentImagesLogoViewModels: [LogoView.ViewModel] = ImageCache.shared.recentImages().map {
-                LogoView.ViewModel(logoState: .image(viewModel: LogoState.ImageViewModel(image: $0))
-                )
+            let currentLogoState = logoViewModel.logoState
+
+            switch currentLogoState {
+            case .initials:
+                self.initialsLogoState = currentLogoState
+                self.imageLogoState = nil
+            case .image:
+                self.imageLogoState = currentLogoState
+                self.initialsLogoState = nil
+            case .color:
+                fatalError("Unexpected state. The program flow should never reach at this point during view model initialization")
             }
+        }
 
-            self.sections = [
+        enum SegmentIndexState: Int {
+            case initials
+            case images
+        }
+
+        func getSections(for selectedState: SegmentIndexState) -> [Section] {
+            switch selectedState {
+            case .initials:
+
+                let randomForegroundColors = ColorProviderUtility.foregroundColors()
+                let randomBackgroundColors = ColorProviderUtility.backgroundColors()
+
+                let foregroundColorViewModels: [LogoView.ViewModel] = randomForegroundColors.map {
+                    .init(logoState: .color(viewModel: .init(color: $0, type: .foreground)))
+                }
+
+                let backgroundColorViewModels: [LogoView.ViewModel] = randomBackgroundColors.map {
+                    .init(logoState: .color(viewModel: .init(color: $0, type: .background)))
+                }
+
+                return [
+                    .preview,
+                    .foregroundColor(foregroundColorViewModels),
+                    .backgroundColor(backgroundColorViewModels)
+                ]
+            case .images:
+
+                let recentImages = ImageCache.shared.recentImages()
+
+                let recentImagesLogoViewModels: [LogoView.ViewModel] = recentImages.map {
+                    LogoView.ViewModel(logoState: .image(viewModel: LogoState.ImageViewModel(image: $0))
+                    )
+                }
+
+                return [
                     .preview,
                     .recentlyUsed(recentImagesLogoViewModels),
                     .logoPickerOptions([.gallery, .camera])
-            ]
+                ]
+            }
+        }
+
+        func getInitialSections() -> [Section] {
+            if self.showingSegmentedControl {
+                return getSections(for: .initials)
+            } else {
+                return getSections(for: .images)
+            }
         }
     }
 
@@ -128,13 +189,24 @@ final public class LogoPickerViewController: UIViewController {
         return tableView
     }()
 
+    private let segmentedControl = UISegmentedControl(frame: .zero)
+
     let viewModel: ViewModel
     public var delegate: LogoPickerViewControllerDelegate?
+
+    var selectedImageLogoState: LogoState?
+    var selectedInitialsLogoState: LogoState?
+
+    var sections: [ViewModel.Section] = []
 
     //MARK: init
     public init(viewModel: ViewModel) {
         self.viewModel = viewModel
         self.updatedLogoViewModel = viewModel.logoViewModel
+
+        self.selectedInitialsLogoState = viewModel.initialsLogoState
+        self.selectedImageLogoState = viewModel.imageLogoState
+
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -154,6 +226,7 @@ final public class LogoPickerViewController: UIViewController {
     //MARK: Private methods
 
     private func reloadView() {
+        sections = viewModel.getInitialSections()
         self.tableView.reloadData()
     }
     
@@ -179,13 +252,40 @@ final public class LogoPickerViewController: UIViewController {
 
         cancelButton.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
+
+        if self.viewModel.showingSegmentedControl {
+
+            segmentedControl.insertSegment(withTitle: "Initials", at: 0, animated: false)
+            segmentedControl.insertSegment(withTitle: "Image", at: 1, animated: false)
+
+            segmentedControl.selectedSegmentIndex = 0
+            self.view.addSubview(segmentedControl)
+            segmentedControl.addTarget(self, action: #selector(segmentedControlTapped), for: .valueChanged)
+        }
     }
 
     //MARK: Layout views
     private func layoutViews() {
+
+        let topParentYOffset: CGFloat = 64.0
+        let innerYOffset: CGFloat = 44.0
+        let bottomYOffset: CGFloat = 20.0
+
+        let totalYOffset = topParentYOffset + innerYOffset + bottomYOffset
+
         self.cancelButton.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 44))
         self.doneButton.frame = CGRect(origin: CGPoint(x: self.view.frame.width - 100, y: 0), size: CGSize(width: 100, height: 44))
-        self.tableView.frame = CGRect(origin: CGPoint(x: 0, y: self.doneButton.frame.maxY), size: CGSize(width: self.view.frame.width, height: self.view.frame.height - 44.0))
+
+        let tableViewYOffset: CGFloat
+
+        if self.viewModel.showingSegmentedControl {
+            self.segmentedControl.frame = CGRect(origin: CGPoint(x: 0, y: self.doneButton.frame.maxY), size: CGSize(width: self.view.bounds.width, height: 44.0))
+            tableViewYOffset = self.segmentedControl.frame.maxY
+        } else {
+            tableViewYOffset = self.doneButton.frame.maxY
+        }
+
+        self.tableView.frame = CGRect(origin: CGPoint(x: 0, y: tableViewYOffset), size: CGSize(width: self.view.frame.width, height: self.view.frame.height - totalYOffset))
     }
 
     @objc private func cancelButtonPressed(_ button: UIButton) {
@@ -204,6 +304,36 @@ final public class LogoPickerViewController: UIViewController {
 
         delegate.selectionCompleted(logoState: updatedLogoViewModel.logoState)
     }
+
+    @objc private func segmentedControlTapped(_ segmentedControl: UISegmentedControl) {
+
+        let selectedIndex = segmentedControl.selectedSegmentIndex
+
+        guard let selectedIndexType = ViewModel.SegmentIndexState(rawValue: selectedIndex) else {
+            Self.logger.error("App has allowed user to choose an invalid segment control index. App has entered an invalid state. Unable to proceed with state and UI update operation")
+            return
+        }
+
+        var newLogoState: LogoState?
+        switch selectedIndexType {
+        case .initials:
+            newLogoState = selectedInitialsLogoState
+        case .images:
+            if let selectedImageLogoState {
+                newLogoState = selectedImageLogoState
+            } else {
+                //Placeholder image view in case no selection has yet been made
+                newLogoState = .image(viewModel: .init(image: Style.shared.profilePlaceholder))
+            }
+        }
+
+        if let newLogoState {
+            self.updatedLogoViewModel = LogoView.ViewModel(logoState: newLogoState, tappable: self.updatedLogoViewModel.tappable)
+        }
+
+        sections = viewModel.getSections(for: selectedIndexType)
+        self.tableView.reloadData()
+    }
 }
 
 //Utility methods
@@ -212,11 +342,45 @@ extension LogoPickerViewController {
     /// A method to update preview with selected logo state
     /// - Parameter logoState: A new logo state to update preview with
     func updatePreview(with logoState: LogoState) {
+
+        let newLogoState: LogoState
         let oldViewModel = self.updatedLogoViewModel
 
-        self.updatedLogoViewModel = LogoView.ViewModel(logoState: logoState, tappable: oldViewModel.tappable)
+        switch logoState {
+        case .initials:
+            fatalError("Unexpected program flow. The control should never reach here once the media is updated")
+            break
+        case .image:
+            guard let previousContentMode = logoState.contentMode, let selectedImage = logoState.selectedImage else {
+                Self.logger.error("Application must have initial selected image and content mode if the user has selected image. The app has entered an invalid state. Unable to proceed")
+                return
+            }
+            newLogoState = LogoState.image(viewModel: .init(image: selectedImage, contentMode: previousContentMode))
+            self.selectedImageLogoState = newLogoState
+        case .color(let viewModel):
+            guard let selectedInitialsLogoState else {
+                Self.logger.error("Application must have initials logo state if the user has selected colors. The app has entered an invalid state. Unable to proceed")
+                return
+            }
 
-        if let previewSectionIndex = self.viewModel.sections.firstIndex(where: {
+            guard
+                let previousForegroundColor = selectedInitialsLogoState.foregroundColor,
+                    let previousBackgroundColor = selectedInitialsLogoState.backgroundColor, let name = selectedInitialsLogoState.name else {
+
+                    return
+                  }
+
+            let newForegroundColor = viewModel.type == .foreground ? viewModel.color : previousForegroundColor
+
+            let newBackgroundColor = viewModel.type == .background ? viewModel.color : previousBackgroundColor
+
+            newLogoState = LogoState.initials(viewModel: LogoState.InitialsViewModel(name: name, titleColor: newForegroundColor, backgroundColor: newBackgroundColor))
+            self.selectedInitialsLogoState = newLogoState
+        }
+
+        self.updatedLogoViewModel = LogoView.ViewModel(logoState: newLogoState, tappable: oldViewModel.tappable)
+
+        if let previewSectionIndex = self.sections.firstIndex(where: {
             if case .preview = $0 {
                 return true
             }

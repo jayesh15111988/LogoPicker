@@ -19,7 +19,11 @@ extension ViewController: LogoPickerViewControllerDelegate {
     //A method that will be called with LogoState enum indicating the user selection
     func selectionCompleted(logoState: LogoState) {
         self.logoView.updateLogoState(with: logoState)
+
+        //Locally store logo state for later use
         self.logoState = logoState
         self.presentedViewController?.dismiss(animated: true)
+
+        //TODO: Use the network module to update logo with the selected parameters. Either image content and the details of initials and styles
     }
 }
