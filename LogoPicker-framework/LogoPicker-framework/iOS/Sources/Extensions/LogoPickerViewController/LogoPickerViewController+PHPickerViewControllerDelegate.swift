@@ -26,7 +26,7 @@ extension LogoPickerViewController: PHPickerViewControllerDelegate {
                         return
                     }
                     if let selectedImage = image as? UIImage{
-                        self.updatePreview(with: .image(logoImage: selectedImage))
+                        self.updatePreview(with: .image(viewModel: LogoState.ImageViewModel(image: selectedImage)))
                     } else {
                         Self.logger.warning("Unable to convert selected object from item provider to UIImage")
 

@@ -46,24 +46,15 @@ final public class LogoView: UIView {
     public struct ViewModel {
 
         let logoState: LogoState
-        let backgroundColor: UIColor
-        let foregroundColor: UIColor
-        let logoContentMode: ContentMode
         let tappable: Bool
 
         /// A method to initialize view model associated with LogoView
         /// - Parameters:
         ///   - logoState: A state indicating the current logo type. Currently support either initials or the actual image
-        ///   - backgroundColor: A background color for logo view
-        ///   - foregroundColor: A text color for logo view title
-        ///   - logoContentMode: Content mod to be applied to presented UIImageView. Defaults to scaleAspectFill enum
         ///   - tappable: A bool indicating whether logo view is tappable or not. Default to false
-        public init(logoState: LogoState, backgroundColor: UIColor, foregroundColor: UIColor, logoContentMode: ContentMode = .scaleAspectFill, tappable: Bool = false) {
+        public init(logoState: LogoState, tappable: Bool = false) {
 
             self.logoState = logoState
-            self.backgroundColor = backgroundColor
-            self.foregroundColor = foregroundColor
-            self.logoContentMode = logoContentMode
             self.tappable = tappable
         }
     }
@@ -117,10 +108,6 @@ final public class LogoView: UIView {
         self.initialsLabel.frame.size = CGSize(width: self.frame.width - 2 * Constants.horizontalSpacing, height: self.frame.height / 3.0)
         self.initialsLabel.center = CGPointMake(bounds.midX, bounds.midY)
 
-        self.backgroundView.backgroundColor = viewModel.backgroundColor
-        self.initialsLabel.textColor = viewModel.foregroundColor
-        self.logoImageView.contentMode = viewModel.logoContentMode
-
         updateLogoState(with: viewModel.logoState)
     }
     
@@ -129,17 +116,26 @@ final public class LogoView: UIView {
     public func updateLogoState(with newState: LogoState) {
 
         switch newState {
-        case .title(let initials):
-            initialsLabel.text = initials
+        case .initials(let viewModel):
+
+            initialsLabel.text = viewModel.initials
+            backgroundView.backgroundColor = viewModel.backgroundColor
+            initialsLabel.textColor = viewModel.titleColor
+
             initialsLabel.isHidden = false
             backgroundView.isHidden = false
             logoImageView.isHidden = true
-        case .image(let logoImage):
-            logoImageView.image = logoImage
+
+        case .image(let viewModel):
+
+            logoImageView.image = viewModel.image
+            logoImageView.contentMode = viewModel.contentMode
+
             backgroundView.isHidden = true
             initialsLabel.isHidden = true
             logoImageView.isHidden = false
         }
+
         self.layer.cornerRadius = newState.cornerRadius(for: self.frame.width)
     }
     

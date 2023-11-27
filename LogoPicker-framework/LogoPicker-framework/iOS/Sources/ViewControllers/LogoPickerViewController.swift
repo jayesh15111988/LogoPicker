@@ -93,11 +93,10 @@ final public class LogoPickerViewController: UIViewController {
             self.logoFrameSize = logoFrameSize
             self.selectedLogoState = logoViewModel.logoState
 
-            let recentImagesLogoViewModels: [LogoView.ViewModel] = ImageCache.shared.recentImages().map { LogoView.ViewModel(
-                logoState: .image(logoImage: $0),
-                backgroundColor: Style.shared.logoBackgroundColor,
-                foregroundColor: Style.shared.logoForegroundColor
-            ) }
+            let recentImagesLogoViewModels: [LogoView.ViewModel] = ImageCache.shared.recentImages().map {
+                LogoView.ViewModel(logoState: .image(viewModel: LogoState.ImageViewModel(image: $0))
+                )
+            }
 
             self.sections = [
                     .preview,
@@ -214,7 +213,8 @@ extension LogoPickerViewController {
     /// - Parameter logoState: A new logo state to update preview with
     func updatePreview(with logoState: LogoState) {
         let oldViewModel = self.updatedLogoViewModel
-        self.updatedLogoViewModel = LogoView.ViewModel(logoState: logoState, backgroundColor: oldViewModel.backgroundColor, foregroundColor: oldViewModel.foregroundColor, logoContentMode: oldViewModel.logoContentMode, tappable: oldViewModel.tappable)
+
+        self.updatedLogoViewModel = LogoView.ViewModel(logoState: logoState, tappable: oldViewModel.tappable)
 
         if let previewSectionIndex = self.viewModel.sections.firstIndex(where: {
             if case .preview = $0 {

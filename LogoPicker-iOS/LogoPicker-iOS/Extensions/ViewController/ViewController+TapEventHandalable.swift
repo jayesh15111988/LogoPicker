@@ -15,16 +15,12 @@ extension ViewController: TapEventHandalable {
     func logoViewTapped() {
 
         //The main logo picker view controller which will allow users to choose the logo image of their choice
-        let logoPickerViewController = LogoPickerViewController(
-            viewModel: LogoPickerViewController.ViewModel(
-                logoViewModel: LogoViewModel(
-                    logoState: logoState,
-                    backgroundColor: Style.shared.logoBackgroundColor,
-                    foregroundColor: Style.shared.logoForegroundColor,
-                    logoContentMode: .scaleAspectFill),
-                logoFrameSize: .square(dimension: 200)
-            )
+        let logoPickerViewModel = LogoPickerViewController.ViewModel(
+            logoViewModel: LogoViewModel(logoState: logoState),
+            logoFrameSize: .square(dimension: 200)
         )
+
+        let logoPickerViewController = LogoPickerViewController(viewModel: logoPickerViewModel)
 
         //A delegate that will be called after user successfully picks the new logo image
         logoPickerViewController.delegate = self

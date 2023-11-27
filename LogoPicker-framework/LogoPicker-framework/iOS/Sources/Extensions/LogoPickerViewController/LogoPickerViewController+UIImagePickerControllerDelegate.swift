@@ -20,6 +20,6 @@ extension LogoPickerViewController: UIImagePickerControllerDelegate, UINavigatio
             alertDisplayUtility.showAlert(with: AlertInfo(title: "Unable to get image", message: "App is unable to get the clicked image. Please try again."), parentViewController: self)
             return
         }
-        updatePreview(with: .image(logoImage: image))
+        updatePreview(with: .image(viewModel: LogoState.ImageViewModel(image: image)))
     }
 }

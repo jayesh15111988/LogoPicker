@@ -16,7 +16,12 @@ typealias LogoViewModel = LogoView.ViewModel
 final class ViewController: UIViewController {
 
     // A selected logo state
-    var logoState: LogoState = .title(initials: "AB")
+    var logoState: LogoState = .initials(
+        viewModel: LogoState.InitialsViewModel(
+            name: "Robert Langdon",
+            titleColor: Style.shared.logoForegroundColor,
+            backgroundColor: Style.shared.logoBackgroundColor)
+    )
 
     private enum Constants {
         static let horizontalSpacing: CGFloat = 10.0
@@ -53,6 +58,7 @@ final class ViewController: UIViewController {
     }
 
     //MARK: Private methods
+
     //MARK: Setting up views
     private func setupViews() {
 
@@ -74,9 +80,6 @@ final class ViewController: UIViewController {
 
         logoView.configure(with: LogoViewModel(
             logoState: logoState,
-            backgroundColor: Style.shared.logoBackgroundColor,
-            foregroundColor: Style.shared.logoForegroundColor,
-            logoContentMode: .scaleAspectFill,
             tappable: true
         ))
 
