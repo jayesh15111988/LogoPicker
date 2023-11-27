@@ -186,6 +186,7 @@ Framework currently supports only the portrait mode.
 3. I have used very basic styles and colors. However, before we release it in production, I need to work with designers to integrate better colors and themes into the framework
 4. Support for landscape mode needs to be added before releasing it in the production
 5. Currently, the framework does not have any tests (Unit/Snapshot/UI). But it can be made more resilient and robust by adding a comprehensive test coverage
+6. In the current state, user can choose the same color for title and background for stylized initials. If this ever happens, the end result can be confusing. In order to prevent that from happening, when the user selects color for either title or the background, we can disable the same color in another category so that we will never have stylized initials with same foreground and background color.
 
 ## Image Uploads
 Once the user finalizes the profile logo (In the form of `LogoState`), app can send a request to server to update it on the back-end. When this happens, we can show loading indicator to user and replace the logo with new image once the network operation is completed. This, however will happen from outside of framework and client is responsible for sending request and updating them on the backend. The reason being, I wanted to keep this component limited to media selection and notifying client of final action.
@@ -207,3 +208,4 @@ The app uses image sources from following third-party websites
 
 https://www.shareicon.net/stick-man-profile-circle-avatar-people-724703
 https://www.flaticon.com/free-icon/image_739249?term=placeholder&page=1&position=3&origin=tag&related_id=739249
+
