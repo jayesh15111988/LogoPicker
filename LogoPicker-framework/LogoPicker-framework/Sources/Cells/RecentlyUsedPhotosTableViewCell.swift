@@ -5,11 +5,7 @@
 //  Created by Jayesh Kawli on 11/26/23.
 //
 
-#if os(iOS)
 import UIKit
-#elseif os(OSX)
-import AppKit
-#endif
 import OSLog
 
 /// A cell to show the collection of recently used logo images

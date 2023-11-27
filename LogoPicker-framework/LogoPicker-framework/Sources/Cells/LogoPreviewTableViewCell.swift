@@ -5,11 +5,7 @@
 //  Created by Jayesh Kawli on 11/25/23.
 //
 
-#if os(iOS)
 import UIKit
-#elseif os(OSX)
-import AppKit
-#endif
 
 /// A table view cell to show the preview of currently selected logo image
 final class LogoPreviewTableViewCell: UITableViewCell {

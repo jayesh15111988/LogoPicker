@@ -5,11 +5,7 @@
 //  Created by Jayesh Kawli on 11/25/23.
 //
 
-#if os(iOS)
 import UIKit
-#elseif os(OSX)
-import AppKit
-#endif
 
 /// An enum to encode the logo state. It currently has two forms. First, showing initials and second, an actual image
 public enum LogoState {

@@ -5,11 +5,7 @@
 //  Created by Jayesh Kawli on 11/25/23.
 //
 
-#if os(iOS)
 import UIKit
-#elseif os(OSX)
-import AppKit
-#endif
 
 /// An utility to show alert info to users in case of any error
 
