@@ -1,36 +1,36 @@
 # ``LogoPicker framework``
 
 ## Overview
-`LogoPicker_framework` is a delightful iOS image picker framework that allows its users to pick logos from available image sources or stylize their initials
+`LogoPicker_framework` is a delightful iOS image picker framework that allows its users to pick logos from available image sources and stylize their initials
 
 ## Users
-This framework will be used by all the clients who need help picking the profile/logo image or stylize the section initials in the app. All they need to do is to initialize the instance of `LogoPickerViewController` passing all the required options in the initializer and setting up a delegate to receive callbacks for completion/cancellation operations
+This framework will be used by all the clients who need help picking the profile/logo image or stylize the section name initials in the app. All they need to do is to initialize the instance of `LogoPickerViewController` passing all the required options in the initializer and setting up a delegate to receive callbacks for completion/cancellation operations
 
 ## Running the app
-To run the app, open `LogoPicker.xcworkspace` in the Xcode, select target `LogoPicker-iOS`, choose appropriate destination and hit run or press `cmd + R` to run the demo project.
+To run the app, open `LogoPicker.xcworkspace` in the Xcode, select target `LogoPicker-iOS`, choose the appropriate destination and hit run or press `cmd + R` to run the demo project.
 
 ## Architecture
 
 ## Source code
-The source code for `LogoPicker` framework is situated under `LogoPicker-framework` target in `LogoPicker.xcworkspace` workspace. The workspace also has another target named `Styles-framework` that provides styles used by the app and the framework.
+The source code for `LogoPicker` framework is situated under `LogoPicker-framework` target in `LogoPicker.xcworkspace` workspace. The workspace also has another framework named `Styles-framework` that provides styles used by the app and the framework.
 
 ### Architecture Pattern
-I am using a simple view view-model-based architecture to build this framework. The view is responsible for displaying UI elements and providing a way to interact with them. The accompanying view model is responsible for applying data transformation and passing them to the view. Currently, it has some business logic related to current functionality and can be extended in the future as required. 
+I am using a simple view view-model-based architecture to build the `LogoPicker-framework` framework. The view is responsible for displaying UI elements and providing a way to interact with them. The accompanying view model is responsible for applying data transformation and passing transformed data and computed properties to the view. Currently, it has some business logic and can be extended in the future as required. 
 
 ### Entry point
 Framework uses the public view controller named `LogoPickerViewController` that allows users to view recent image selection, preview selection, choose images from available source and stylize initials. Once the selection is made, user can preview them on the same screen and finalize selection by tapping `Done` button. Users of this framework are expected to set delegate for `LogoPickerViewController` to receive callbacks once the selection is made. User can then utilize provided media type as per their requirements.
 
-### UI Division
-The main screen is divided into three different sections based on the type as follows,
+### UI Structure
+The main screen is divided into three different sections based on the input logo type as follows,
 
 For image logo selection
 1. Preview - To preview the selected image
-2. Recently used images - Collection of recently used images. This is represented using a collection view
-3. Picker options / Image sources - List of sources from which the user can select images
+2. Recently used images - Collection of recently used images. 
+3. Picker options / Image sources - List of sources which the user can select images from
 
 For stylizing initials
 1. Preview - To preview how stylized initials look like based on style selection
-2. Foreground colors - The list of foreground colors that can be applied to initials
+2. Foreground colors - The list of foreground colors that can be applied to initials text
 3. Background colors - The list of background colors that can be applied to the initials background view
 
 ### Extensibility
@@ -60,7 +60,7 @@ To use the framework into your project, simply drag and drop the `LogoPicker-fra
 
 Also, please make sure these frameworks are embedded into your project. For this, follow next steps,
 1. Click on your project target
-2. Go to General tab in Xcode
+2. Go to the General tab in Xcode
 3. Under Frameworks, Libraries and Embedded Content choose "Embed and Sign" option for both of them
 
 <img width="789" alt="Screenshot 2023-11-26 at 7 16 27 PM" src="https://github.com/jayesh15111988/LogoPicker/assets/6687735/08bd001b-11b8-43b5-a21d-058e9af3f843">
@@ -162,35 +162,44 @@ The framework does not use any third-party library. However, it uses the interna
 ## Supported Appearances
 The framework supports both light and dark modes without any loss of functionality
 
-## Deployment targets
-The minimum deployment target for the framework is iOS 16 and currently supports only the portrait mode.
+## Deployment Targets
+The minimum deployment target for the framework is iOS 16
+
+## Display Mode
+Framework currently supports only the portrait mode.
 
 ## Known limitations
-1. The framework is currently only designed to support iOS platform. Due to complexity involved in writing similar code for AppKit, I decided to skip this part
+1. The framework is currently only designed to support iOS platform. Due to the complexity involved in writing similar code for AppKit, I decided to skip this part
 2. Crop and resizing support - iOS does not have built-in support for cropping and resizing chosen images. Since adding this support involved complicated calculations, and I did not want to ship half-baked products, I decided to not include this feature
 3. Currently, the framework has only two image sources from the device. However, users may still want to download images from remote URLs and it will be nice to add that support so that they won't be constrained by limitations of on-device asset collection
 4. Currently, the framework uses a dummy cache to display recently used images. However, it is still lacking support to store them in the persistent cache that can live between app relaunches
-5. App does not allow users to change font for stylized initials. This could be good future improvement for better control over customization
+5. App does not allow users to change font for stylized initials. This could be a good future improvement for better control over customization
 6. The app is only supported in the portrait mode. However, support could be added to support landscape mode in the future
 
 ## Potential next steps in order to ‘productionize’ the solution
 1. Adding support for resizing and cropping images to improve the user experience
 2. Currently framework has no support for persistent cache for recent images. I have added dummy images for demo purposes, but in the future, we still need to add support to persistently save and display recently used images without client intervention
 3. I have used very basic styles and colors. However, before we release it in production, I need to work with designers to integrate better colors and themes into the framework
-4. Support for landscape mode needs be added before releasing it in the production
+4. Support for landscape mode needs to be added before releasing it in the production
 5. Currently, the framework does not have any tests (Unit/Snapshot/UI). But it can be made more resilient and robust by adding a comprehensive test coverage
 
 ## Image Uploads
-Once the user finalizes the profile logo (In the form of `LogoState`), app can send a request to server to update it on the back-end. When this happens, we can show loading indicator to user and replace the logo with new image once the network operation is completed. This, however will happen from outside of framework and client is responsible for sending request and updating them on the backend. The reason being, I want to keep this component limited to media selection and notifying client of final action.
+Once the user finalizes the profile logo (In the form of `LogoState`), app can send a request to server to update it on the back-end. When this happens, we can show loading indicator to user and replace the logo with new image once the network operation is completed. This, however will happen from outside of framework and client is responsible for sending request and updating them on the backend. The reason being, I wanted to keep this component limited to media selection and notifying client of final action.
 
 Currently, `LogoState` takes two forms
 1. Initials
 2. Image
 
-In case of initials, app can encode the metadata (name, color style) and send it to the server. In case of image media, app can encode image data and upload it on the server. 
+In case of initials, app can encode the metadata (name, color styles) and send it to the server. In case of image media, app can encode image data and upload it on the server and get the remote URL back. 
+
+At one point, user logo can have only one state - Meaning it won't have both stylized initials and a profile image. Since both these formats follow different conventions, they will be encoded separately in the incoming response. It is the client's responsibility to infer it and convert this data into a `LogoState` enum
 
 ## Image Sources
-Currently, app sources images from local image gallery and camera. However, support can be extended to load them from other sources such as from direct URL
-In case of initials, they are derived from the title of the page image picker is triggered from.
+Currently, app sources images from local image gallery and camera. However, support can be extended to load them from other sources such as from direct URL.
+In case of initials, they are derived from the title of the page image picker is triggered from and we expect the client to provide them while initializing `LogoPickerViewController` screen
 
+## Third party images
+The app uses image sources from following third-party websites
 
+https://www.shareicon.net/stick-man-profile-circle-avatar-people-724703
+https://www.flaticon.com/free-icon/image_739249?term=placeholder&page=1&position=3&origin=tag&related_id=739249
