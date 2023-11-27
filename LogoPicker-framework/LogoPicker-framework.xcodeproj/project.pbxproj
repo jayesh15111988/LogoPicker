@@ -183,6 +183,14 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		914E224A2B14883200FF4CD2 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				91783D632B11FEC100766268 /* Sources */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		91783D032B11FE8D00766268 = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +214,7 @@
 		91783D0F2B11FE8D00766268 /* LogoPicker-framework */ = {
 			isa = PBXGroup;
 			children = (
-				91783D632B11FEC100766268 /* Sources */,
+				914E224A2B14883200FF4CD2 /* iOS */,
 				91783D102B11FE8D00766268 /* LogoPicker_framework.h */,
 				91783D112B11FE8D00766268 /* LogoPicker_framework.docc */,
 				91C7F7092B134A5E006B30AD /* Assets.xcassets */,
