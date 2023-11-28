@@ -1,3 +1,5 @@
+# The accompanying Craft document for the framework can be access from [this link](https://www.craft.me/s/p05PNNEZ8rTMb3).
+
 # ``LogoPicker framework``
 
 ## Demo
