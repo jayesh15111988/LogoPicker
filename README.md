@@ -1,3 +1,6 @@
+# This is the solution for Craft iOS Coding Challenge problem. The full problem statement can be found at https://documents.craft.me/UEmNt7phWBwxhi. 
+# In case this document has been moved, please refer to [this PDF document](https://github.com/jayesh15111988/LogoPicker/blob/master/Craft%20iOS%20Coding%20Challenge.pdf) in the same repository.
+
 # The accompanying Craft document for the framework can be accessed from [this link](https://www.craft.me/s/p05PNNEZ8rTMb3).
 
 # ``LogoPicker framework``
